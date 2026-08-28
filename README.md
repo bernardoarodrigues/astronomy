@@ -1,9 +1,37 @@
-# Voyager 1 radio-signal benchmark — Phase 1
+# Reproducible search for signals beyond Earth
 
-This repository provides a small, reproducible engineering benchmark that
-recovers the known Voyager 1 downlink features in a public Breakthrough Listen
-observation. It is not an extraterrestrial-signal claim, a general detection
-pipeline, or a measurement of Voyager's physical properties.
+This repository develops auditable searches for atmospheric biosignatures and
+radio technosignatures. The completed first milestone is a small, reproducible
+engineering benchmark that recovers the known Voyager 1 downlink features in a
+public Breakthrough Listen observation. It is not an extraterrestrial-signal
+claim, a general detection pipeline, or a measurement of Voyager's physical
+properties.
+
+The next experiments are deliberately hypothesis-led rather than
+headline-led. [`docs/EXPLORATION_PLAN.md`](docs/EXPLORATION_PLAN.md) ranks
+K2-18 b and seven complementary systems, identifies public data and realistic
+download sizes, and separates what existing observations can test from what
+needs new observations. The corresponding machine-readable
+[`docs/hypothesis_ledger.json`](docs/hypothesis_ledger.json) freezes the initial
+claims, nulls, confounders, gates, and stopping rules.
+
+## Current state
+
+- **Radio positive control — complete:** all three documented Voyager features
+  were recovered from the guarded 50 MB input; the 18-test suite passes.
+- **Radio cadence validation — planned:** the compact 1.45 GB HIP 56242
+  ABACAD set is documented but has not been downloaded.
+- **Atmospheric positive/negative controls — planned:** begin with published
+  spectra, not raw telescope ramps, for WASP-39 b and GJ 486 b.
+- **K2-18 b — retrospective replication only:** methane is the strongest
+  published atmospheric result; CO2 is less independently mature; DMS/DMDS,
+  an ocean, a technosignature, and life are not established.
+
+Each evidence track gets its own manifests, dependencies, results, and claim
+gates. Success means a reproducible, calibrated answer—including a null—not a
+candidate.
+
+## Phase 1 — Voyager benchmark
 
 Phase 1 uses Berkeley SETI's 50 MB single-coarse-channel HDF5 example rather
 than a raw observation measured in many gigabytes. `blimpy` reads and plots the
@@ -109,4 +137,3 @@ already-known spacecraft transmission and no claim about unlisted hits.
 Phase 2 (HIP 56242) and BLC1 are future acceptance gates only. Their data have
 not been downloaded or added to this Phase 1 manifest; see
 [`docs/FUTURE_GATES.md`](docs/FUTURE_GATES.md).
-

@@ -109,6 +109,21 @@
       "allowed_claim": "B3b has not been executed; global molecular-attribution calibration and real-data readiness remain unestablished."
     },
     {
+      "hypothesis_id": "H-K218-G395H-MORPH",
+      "target_id": "K2-18-b",
+      "track": "atmosphere",
+      "layer": "observation",
+      "selection_status": "retrospective_replication",
+      "exact_claim": "The signed local 4.3-micrometre morphology in the pinned published GO-2372 G395H spectra is positive in both visits under both paired reduction views and survives the frozen covariance and deletion diagnostics.",
+      "status": "contradicted",
+      "null_hypothesis": "At least one visit or correlated reduction view does not meet the frozen positive-morphology criteria, or a required covariance or one-bin-deletion diagnostic is nonpositive or invalid.",
+      "competing_hypotheses": ["repeatable positive local morphology", "visit-specific morphology", "reduction-sensitive morphology", "covariance-sensitive morphology", "influential-bin morphology"],
+      "test": "Using the metadata-selected GO-2372 G395H visits C2 and C3 only, fit the signed NRS2 4.3-micrometre local contrast separately to the paired Eureka and exoTEDRF views on one frozen overlap-aware R=100 grid; run full-GLS AR(1) and leave-one-output-bin-out diagnostics without cross-reduction voting.",
+      "success_gate": "All four nominal cells are present and valid with A greater than zero and retrospective standardized contrast z at least 2; every rho sensitivity and every valid required deletion has A greater than zero; no required cell or diagnostic is missing or failed.",
+      "stop_rule": "Every other execution is SCIENCE_UNRESOLVED / criterion_not_met. Never infer molecule identity, atmosphere, planetary origin, biosignature, life, independent confirmation, B3/B3b completion, or real-data readiness; this result cannot update H-K218-CO2.",
+      "allowed_claim": "The frozen retrospective harness found a positive local 4.3-micrometre morphology in C2 but not C3 in either paired reduction view, so the repeatable-positive criterion was not met and the result is SCIENCE_UNRESOLVED; molecular attribution is not evaluated."
+    },
+    {
       "hypothesis_id": "H-K218-CH4",
       "target_id": "K2-18-b",
       "track": "atmosphere",

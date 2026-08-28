@@ -23,6 +23,7 @@ dependencies = [
 [project.scripts]
 atmosphere-benchmark = "atmosphere_benchmark.cli:main"
 gj486-benchmark = "gj486_benchmark.cli:main"
+k218-repeatability = "k218_repeatability.cli:main"
 synthetic-atmosphere-benchmark = "synthetic_atmosphere_benchmark.cli:main"
 voyager-benchmark = "voyager_benchmark.cli:main"
 
@@ -35,5 +36,6 @@ where = ["src"]
 [tool.setuptools.package-data]
 atmosphere_benchmark = ["data_manifest.json"]
 gj486_benchmark = ["data_manifest.json"]
+k218_repeatability = ["data_manifest.json"]
 synthetic_atmosphere_benchmark = ["data_manifest.json"]
 voyager_benchmark = ["data_manifest.json"]

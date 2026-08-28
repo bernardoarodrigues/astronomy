@@ -84,6 +84,19 @@ class HypothesisLedgerTests(unittest.TestCase):
         self.assertEqual(b3b["status"], "untested")
         self.assertIn("remain unestablished", b3b["allowed_claim"].lower())
 
+    def test_k218_morphology_is_separate_non_attribution_hypothesis(self):
+        hypothesis = next(
+            item
+            for item in self.ledger["hypotheses"]
+            if item["hypothesis_id"] == "H-K218-G395H-MORPH"
+        )
+        self.assertEqual(hypothesis["layer"], "observation")
+        self.assertEqual(hypothesis["status"], "contradicted")
+        self.assertIn("SCIENCE_UNRESOLVED", hypothesis["allowed_claim"])
+        self.assertIn("molecular attribution is not evaluated", hypothesis["allowed_claim"])
+        self.assertIn("cannot update H-K218-CO2", hypothesis["stop_rule"])
+        self.assertIn("B3/B3b", hypothesis["stop_rule"])
+
 
 if __name__ == "__main__":
     unittest.main()

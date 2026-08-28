@@ -41,6 +41,11 @@ claims, nulls, confounders, gates, and stopping rules.
 - **Sealed synthetic scientific gate — pending:** B3b still requires an
   independent truth custodian/scorer and the preregistered 2,000-negative,
   1,000-power, and 2,000-coverage-per-cell release ensembles.
+- **K2-18 b visit-level morphology — executed, unresolved:** the isolated
+  GO-2372 harness found a positive predeclared 4.3 µm local contrast in C2 but
+  not C3 under either paired Eureka/exoTEDRF view, so the frozen repeatability
+  criterion was not met. It neither attributes a molecule nor changes
+  B3b/readiness or the existing K2-18 molecular hypotheses.
 - **K2-18 b — retrospective replication only:** methane is the strongest
   published atmospheric result; CO2 is less independently mature; DMS/DMDS,
   an ocean, a technosignature, and life are not established.
@@ -115,6 +120,30 @@ order-independent PCG64DXSM streams. Its current frozen result is
 evidence, not permission to tune the suite, declare B3 complete, or analyze
 K2-18 b. See
 [`docs/SYNTHETIC_ATMOSPHERE_PREFLIGHT.md`](docs/SYNTHETIC_ATMOSPHERE_PREFLIGHT.md).
+
+## K2-18 b GO-2372 published-spectrum repeatability
+
+The isolated `k218_repeatability` package and `k218-repeatability` CLI pin a
+275,602-byte Hu et al. OSF archive and safely extract only the four selected
+NRS2 visit/reduction views. A metadata-only inventory selects both GO-2372
+G395H visits and marks historical GO-2722 C1 ineligible. The two reductions of
+each visit are explicitly correlated views and are never combined or voted as
+independent evidence.
+
+```bash
+uv sync
+uv run k218-repeatability download
+uv run k218-repeatability extract
+uv run k218-repeatability verify
+uv run k218-repeatability run
+```
+
+The analysis uses one hashed global R=100 log grid, overlap-aware
+inverse-variance rebinning with full covariance propagation, a signed local
+4.3 µm morphology contrast, two AR(1) sensitivity models, and full-model
+one-bin deletions. `z` is a retrospective standardized contrast, not discovery
+significance. See [`docs/K218_REPEATABILITY.md`](docs/K218_REPEATABILITY.md)
+for the frozen contract, `SCIENCE_UNRESOLVED` result, and claim boundary.
 
 ## Phase 1 — Voyager benchmark
 

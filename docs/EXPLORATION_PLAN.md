@@ -110,6 +110,12 @@ sink tests before the phrase “potential biosignature” could be considered.
 - [ ] **B3b pending:** run a separately governed sealed hidden-truth suite with
   an independent truth custodian/scorer and the full preregistered Monte Carlo
   sizes before any K2-18 b authorization.
+- [x] **Observation-layer K2-18 morphology check executed, hypothesis
+  contradicted:** C2 met the local positive-contrast criterion in both paired
+  views, while C3 did not in either. The frozen output is
+  `SCIENCE_UNRESOLVED / criterion_not_met`. This retrospective
+  published-spectrum check is non-attribution and does not update H-K218-CO2,
+  B3b, or real-data readiness.
 - [ ] Only then run the frozen K2-18 b CH4 and CO2 replication.
 - [ ] Treat the K2-18 b DMS/DMDS exercise as an adversarial model-comparison test,
    not a search optimized to recover sulfur.

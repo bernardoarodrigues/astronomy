@@ -15,6 +15,8 @@ data/*.part
 artifacts/
 data/atmosphere/
 data/gj486/
+data/k218_repeatability/
 work/gj486-source/*.zip
+work/k218-source/*.zip
 work/gj486-miri-source/*.zip
 work/wasp39-source/*.zip

@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "k218-go2372-published-spectrum-repeatability-v1",
+  "description": "Retrospective visit-level morphology analysis of pinned published K2-18 b GO-2372 spectra; no molecular attribution is evaluated.",
+  "archive": {
+    "record": "OSF HPU8G public file j6p7r",
+    "doi": "https://doi.org/10.17605/OSF.IO/HPU8G",
+    "url": "https://osf.io/download/j6p7r/",
+    "filename": "spectra-k2-18b.zip",
+    "size_bytes": 275602,
+    "sha256": "4ee5cb6ad42015bd8fb10f64e54329d250137ab1fa129c89a14830946adc8f18",
+    "license_spdx": "NOASSERTION",
+    "default_max_download_bytes": 1000000,
+    "hard_max_download_bytes": 20000000000,
+    "max_archive_members": 1000,
+    "max_total_uncompressed_bytes": 20000000
+  },
+  "program": {
+    "program_id": "GO-2372",
+    "instrument_mode": "JWST/NIRSpec G395H transmission",
+    "complete_g395h_visit_inventory": {
+      "visit_1": {
+        "paper_label": "C1",
+        "program_id": "GO-2722",
+        "observation_date_utc": "2023-01-20",
+        "eligible": false,
+        "reason": "ineligible_historical_program"
+      },
+      "visit_2": {
+        "paper_label": "C2",
+        "program_id": "GO-2372",
+        "observation_date_utc": "2024-05-28",
+        "eligible": true,
+        "independence_group": "GO-2372-C2-photons"
+      },
+      "visit_3": {
+        "paper_label": "C3",
+        "program_id": "GO-2372",
+        "observation_date_utc": "2024-12-12",
+        "eligible": true,
+        "independence_group": "GO-2372-C3-photons"
+      }
+    },
+    "selection_rule": "Select every G395H visit in GO-2372 for which both archived Eureka and exoTEDRF NRS2 views are present; this selects C2 and C3 exactly.",
+    "selection_basis": "metadata_only",
+    "spectral_result_selection": false,
+    "eligible_visits": ["visit_2", "visit_3"],
+    "evidence_units": 2,
+    "paired_correlated_views_per_evidence_unit": 2,
+    "reductions_are_independent": false,
+    "cross_reduction_combination": "prohibited",
+    "note": "Eureka and exoTEDRF are paired correlated views of each visit's photons, not independent evidence; cross-reduction z combination and voting are prohibited."
+  },
+  "members": [
+    {
+      "role": "exotedrf_visit_2_nrs2",
+      "reduction": "exoTEDRF",
+      "visit": "visit_2",
+      "detector": "NRS2",
+      "path": "spectra/nirspec_exotedrf_by_visit/K2_18_b_NIRSPEC_G395H_NRS2_0004um_Spectrum_Visit2.spec",
+      "size_bytes": 46978,
+      "sha256": "fc6bf0dac2666cc5ad756a7a34cf5bd9a02efbc842bc2c011a18b4d479b65bc4",
+      "rows": 335,
+      "wavelength_min_micrometres": 3.832,
+      "wavelength_max_micrometres": 5.168
+    },
+    {
+      "role": "exotedrf_visit_3_nrs2",
+      "reduction": "exoTEDRF",
+      "visit": "visit_3",
+      "detector": "NRS2",
+      "path": "spectra/nirspec_exotedrf_by_visit/K2_18_b_NIRSPEC_G395H_NRS2_0004um_Spectrum_Visit3.spec",
+      "size_bytes": 46978,
+      "sha256": "7ec58214c6a485e80b53586cad024faff401fecf1bcd7fd2cce50cb6bb748789",
+      "rows": 335,
+      "wavelength_min_micrometres": 3.832,
+      "wavelength_max_micrometres": 5.168
+    },
+    {
+      "role": "eureka_visit_2_nrs2",
+      "reduction": "Eureka",
+      "visit": "visit_2",
+      "detector": "NRS2",
+      "path": "spectra/nirspec_eureka_by_visit/S6_k2_18b_g395_nrs2_ap3_bg9_rp^2_Table_Save_g395_nrs2_c2.txt",
+      "size_bytes": 33063,
+      "sha256": "fc760dc18d194ec78eae1798e4c6802e98bc0ecd8ac57120dd0ad674cbcb6b69",
+      "rows": 335,
+      "wavelength_min_micrometres": 3.832,
+      "wavelength_max_micrometres": 5.168
+    },
+    {
+      "role": "eureka_visit_3_nrs2",
+      "reduction": "Eureka",
+      "visit": "visit_3",
+      "detector": "NRS2",
+      "path": "spectra/nirspec_eureka_by_visit/S6_k2_18b_g395_nrs2_ap3_bg9_rp^2_Table_Save_g395_nrs2_c3.txt",
+      "size_bytes": 33054,
+      "sha256": "5a814195e5220dd9428c23c6c9f764914a8615c7d7c8e214071bc02b6d72251d",
+      "rows": 335,
+      "wavelength_min_micrometres": 3.832,
+      "wavelength_max_micrometres": 5.168
+    }
+  ],
+  "schemas": {
+    "exoTEDRF": {
+      "format": "ECSV comma-separated",
+      "columns": [
+        "instrname",
+        "reference",
+        "bandpass",
+        "iwave",
+        "wave",
+        "waveMin",
+        "waveMax",
+        "xMin",
+        "xMax",
+        "yval",
+        "yerrLow",
+        "yerrUpp",
+        "wlcLow",
+        "wlcUpp",
+        "ignore",
+        "referenceLink"
+      ],
+      "wavelength_unit": "micrometre",
+      "depth_unit": "ppm",
+      "uncertainty_rule": "max(yerrLow,yerrUpp), with both reported errors required positive"
+    },
+    "Eureka": {
+      "format": "ECSV whitespace-separated",
+      "columns": [
+        "wavelength",
+        "bin_width",
+        "rp^2_value",
+        "rp^2_errorneg",
+        "rp^2_errorpos"
+      ],
+      "wavelength_unit": "micrometre",
+      "depth_unit": "fractional_transit_depth",
+      "uncertainty_rule": "1000000*max(rp^2_errorneg,rp^2_errorpos), with both reported errors required positive",
+      "unit_note": "The table omits ECSV unit tags; field names and value scale identify wavelength in micrometres and rp-squared as a fraction. Validation rejects values outside the frozen physical scale."
+    }
+  },
+  "rebinning": {
+    "resolving_power": 100.0,
+    "grid_anchor_micrometres": 1.0,
+    "grid_definition": "e_k = 1 micrometre * exp(k/100) for integer k",
+    "first_edge_index": 135,
+    "last_edge_index": 155,
+    "edge_count": 21,
+    "output_bin_count": 20,
+    "edge_sha256": "7f7e418fc0bfde1478d7ade8a4fef0f774bc7bb0f3046a918be7bc763d3b2d28",
+    "edge_hash_encoding": "newline-joined Python float64 format(.17g), no trailing newline",
+    "assignment": "For each output row j, W_ji is proportional to overlap_length(native_i,output_j)/sigma_i^2 and normalized so the used row sums to 1; y_out=W*y_native and every assumed covariance is propagated as C_out=W*C_native*W^T",
+    "coverage_relative_tolerance": 1e-12,
+    "minimum_coverage_fraction": 0.999999999999,
+    "overlap_invariant": "W_ji must be exactly zero when native interval i has zero overlap with output interval j; a native row may contribute to multiple non-overlapping output bins only in proportion to its actual interval overlap",
+    "edge_policy": "use only global cells wholly inside 3.85-4.75 micrometres and wholly covered by native NRS2 cells; reject rather than clip partial cells",
+    "identical_grid_required_across_all_four_spectra": true
+  },
+  "analysis": {
+    "label": "4.3-micrometre morphology",
+    "detector": "NRS2",
+    "domain_micrometres": [3.85, 4.75],
+    "feature_micrometres": [4.05, 4.55],
+    "model": "y = alpha + beta*(lambda-4.30) + A*f, where f is the output-bin wavelength-overlap fraction with [4.05,4.55] micrometres",
+    "pivot_micrometres": 4.3,
+    "primary_covariance": "C_native=diag(max(error_low,error_high)^2), with both errors positive; C_out=W*C_native*W^T; fit by full GLS",
+    "ar1_rho_sensitivities": [0.25, 0.5],
+    "ar1_scope": "C_native_ij=sigma_i*sigma_j*rho^abs(i-j) within NRS2, propagated as W*C_native*W^T and fit by full GLS",
+    "z_label": "retrospective_standardized_contrast",
+    "report_diagnostics": ["amplitude_ppm", "amplitude_se_ppm", "z", "bin_count", "design_rank", "normal_condition_number", "slope_amplitude_correlation"],
+    "leave_one_output_bin_out": "refit the full intercept+slope+feature model with the corresponding covariance row and column removed; any invalid fit fails closed",
+    "outcome_rules": {
+      "repeatable_positive_morphology": "all four nominal cells exist and are valid with A>0 and z>=2, every rho sensitivity is valid with A>0, every one-bin-deletion fit is valid with A>0, and no cell or required diagnostic is missing or failed",
+      "SCIENCE_UNRESOLVED": "criterion_not_met for every other result; no all-abs(z)-below-2 state is defined"
+    },
+    "outcome_rule_priority": [
+      "repeatable_positive_morphology",
+      "SCIENCE_UNRESOLVED"
+    ],
+    "combination_rules": {
+      "within_reduction": "fixed common effect and Cochran Q across visit_2 and visit_3 only",
+      "paired_reduction_difference": "Eureka-minus-exoTEDRF amplitude per visit, without significance because cross-reduction covariance is unavailable",
+      "cross_reduction_z_combination": "prohibited",
+      "cross_reduction_voting": "prohibited"
+    }
+  },
+  "output_contract": {
+    "retrospective": true,
+    "independent_reduction": false,
+    "planetary_origin": "not_evaluated",
+    "atmosphere": "not_evaluated",
+    "molecule": "not_evaluated",
+    "molecule_attribution": "not_evaluated",
+    "biosignature": "not_evaluated",
+    "biosignature_state": "not_evaluated",
+    "evidence_of_life": false,
+    "b3_completion": false,
+    "claim_scope": "published-spectrum feature repeatability"
+  },
+  "allowed_claim": "The harness reports whether the signed 4.3-micrometre morphology in the pinned published GO-2372 spectra is repeatable across the two visits and stable across two correlated reductions under the frozen diagnostics; molecular attribution is not evaluated.",
+  "prohibited_claims": [
+    "independent molecular detection or confirmation",
+    "independent evidence from Eureka and exoTEDRF",
+    "methane attribution",
+    "carbon-dioxide attribution",
+    "DMS or DMDS attribution",
+    "biosignature",
+    "habitability",
+    "evidence of life",
+    "B3 or B3b completion"
+  ],
+  "citations": {
+    "osf_record": "https://doi.org/10.17605/OSF.IO/HPU8G",
+    "paper": "https://arxiv.org/abs/2507.12622",
+    "jwst_program": "https://www.stsci.edu/jwst/science-execution/program-information?id=2372"
+  }
+}

@@ -53,6 +53,19 @@ class HypothesisLedgerTests(unittest.TestCase):
         self.assertTrue(k2_claims)
         self.assertTrue(all("evidence of life" not in claim for claim in k2_claims))
 
+    def test_gj486_is_frozen_as_unresolved_with_narrow_claim(self):
+        hypothesis = next(
+            item
+            for item in self.ledger["hypotheses"]
+            if item["hypothesis_id"] == "H-GJ486-ORIGIN"
+        )
+        self.assertEqual(hypothesis["status"], "unresolved")
+        self.assertEqual(
+            hypothesis["allowed_claim"],
+            "The harness reproduces the pinned GO 1981 NIRSpec water-template regressions and exposes their reduction, detector-side, influential-bin, covariance, and nuisance sensitivity; no direct planet-versus-star origin comparison is available in the deposited products.",
+        )
+        self.assertNotIn("detection", hypothesis["allowed_claim"].lower())
+
 
 if __name__ == "__main__":
     unittest.main()

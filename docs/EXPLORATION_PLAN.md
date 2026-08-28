@@ -54,7 +54,7 @@ every raw and intermediate product.
 | Rank | System | Role and first test | Public-data starting point | Why it belongs |
 |---:|---|---|---|---|
 | 1 | K2-18 b | Retrospective atmospheric controversy benchmark | Published spectra first; JWST GO-2722 and five public GO-2372 visits, about 7.8 GB of recommended products | Test whether CH4, CO2 and especially DMS/DMDS survive independent reductions, retrievals, molecule inventories and stellar models. |
-| 2 | GJ 486 b | Stellar false-positive benchmark | Published spectrum first; JWST GO-1743/5866, about 4.3 GB, plus TESS | Its water-like feature has explicit planetary-atmosphere and cool-starspot explanations. |
+| 2 | GJ 486 b | Stellar false-positive benchmark | Published GO-1981 NIRSpec spectrum/model tables; separate GO-1743 MIRI author-data constraint; GO-5866 NIRISS public archive time series only | Its water-like feature has explicit planetary-atmosphere and cool-starspot explanations, while the current deposited evidence remains origin-unresolved. |
 | 3 | WASP-39 b | Atmospheric positive control | Published spectrum first; public JWST/HST data, about 32.2 GB of recommended JWST products | Recover a strong CO2 atmosphere before interpreting weaker sub-Neptune or rocky-planet spectra. This is a method control, not a life target. |
 | 4 | TRAPPIST-1 system | Active-star and inner-planet controls; later radio cadence | Published spectra; extensive JWST/HST/K2/TESS holdings. BL filterbanks are roughly 0.35-0.81 GB per file | Use b/c as atmosphere-poor controls when testing e; validate stellar-contamination handling and an existing ON/OFF radio cadence. |
 | 5 | LHS 1140 b | Temperate atmosphere/interior discrimination | Published spectra first; public JWST/HST/TESS. Full recommended JWST holdings are about 125.8 GB | Compare water-world, mini-Neptune and secondary-atmosphere explanations without presuming habitability. |
@@ -102,7 +102,7 @@ sink tests before the phrase “potential biosignature” could be considered.
 ### Milestone B — smallest atmospheric proof of method
 
 - [x] Recover WASP-39 b's strong CO2 feature from a published spectrum.
-- [ ] Reproduce the GJ 486 b planet-versus-starspot model comparison.
+- [x] Reproduce the archived GJ 486 b NIRSpec water-template regressions and their sensitivity diagnostics; label the direct planet-versus-star comparison `not_evaluated`, preserve `science_unresolved`, and reproduce GO-1743 MIRI only as a separate fixed-model constraint.
 - [ ] Run the identical retrieval harness on synthetic spectra with hidden truth.
 - [ ] Only then run the frozen K2-18 b CH4 and CO2 replication.
 - [ ] Treat the K2-18 b DMS/DMDS exercise as an adversarial model-comparison test,

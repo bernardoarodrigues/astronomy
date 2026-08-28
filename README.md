@@ -25,7 +25,13 @@ claims, nulls, confounders, gates, and stopping rules.
 - **Atmospheric positive control — complete:** the isolated WASP-39 b harness
   recovers the frozen 4.3 µm feature in the published FIREFLy spectrum with
   leave-one-out, assumed-covariance, scale-invariance, and null-calibration
-  checks. GJ 486 b remains a planned negative control.
+  checks.
+- **Atmospheric ambiguity reproduction — complete:** the separate GJ 486 b
+  harness reproduces the archived NIRSpec water-template regressions, exposes
+  their sensitivity, ranks the stellar mixtures, and reproduces a separate
+  MIRI fixed-model constraint. Its required result is `PASS /
+  science_unresolved`; the direct planet-versus-star origin comparison is
+  explicitly `not_evaluated`.
 - **K2-18 b — retrospective replication only:** methane is the strongest
   published atmospheric result; CO2 is less independently mature; DMS/DMDS,
   an ocean, a technosignature, and life are not established.
@@ -54,6 +60,27 @@ See [`docs/ATMOSPHERE_BENCHMARK.md`](docs/ATMOSPHERE_BENCHMARK.md) for frozen
 inputs, equations, acceptance bands, citations, artifact contract, and strict
 claim limitations. This positive control does not alter the Voyager package or
 its commands.
+
+## Milestone B2 — GJ 486 b retrospective ambiguity reproduction
+
+The isolated `gj486_benchmark` package and `gj486-benchmark` CLI pin corrected
+Zenodo v3 NIRSpec inputs plus a separate GO 1743 MIRI author-data constraint.
+The archive downloads total about 289.5 MB. Both default guards remain far
+below the immutable 20 GB project ceiling.
+
+```bash
+uv sync
+uv run gj486-benchmark download
+uv run gj486-benchmark extract
+uv run gj486-benchmark verify
+uv run gj486-benchmark run
+```
+
+The three NIRSpec reductions are correlated robustness views and are never
+combined as independent evidence. GO 5866 is recorded only as public NIRISS
+archive time-series availability, with no B2 interpretation. See
+[`docs/GJ486_BENCHMARK.md`](docs/GJ486_BENCHMARK.md) for inputs, calculations,
+program provenance, diagnostics, citations, and the strict claim ceiling.
 
 ## Phase 1 — Voyager benchmark
 

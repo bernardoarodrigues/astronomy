@@ -68,14 +68,14 @@
       "track": "atmosphere",
       "layer": "observation",
       "selection_status": "negative_control",
-      "exact_claim": "The water-like feature can be discriminated between a planetary atmosphere and cool stellar spots with the frozen model comparison.",
-      "status": "untested",
+      "exact_claim": "The harness reproduces the pinned GO 1981 NIRSpec water-template regressions and measures their sensitivity; the deposited products do not contain the direct planet-versus-star comparison needed to resolve their origin.",
+      "status": "unresolved",
       "null_hypothesis": "The public spectrum cannot discriminate the planetary and stellar explanations.",
       "competing_hypotheses": ["planetary water vapor", "unocculted cool starspots", "joint star and planet model"],
-      "test": "Reproduce planet-only, star-only and joint fits using external stellar priors and held-out wavelength checks.",
-      "success_gate": "One explanation clears the frozen global evidence and posterior-predictive gates in independent implementations.",
+      "test": "Fit the signed author water template independently to Eureka, Firefly and Tiberius with and without a detector step; run deletion, scale and assumed-covariance diagnostics; rank archived PHOENIX mixtures with identical multiplicative nuisances; reproduce the separate GO-1743 MIRI fixed-model constraint.",
+      "success_gate": "Reproduce the frozen per-reduction z fingerprints without correlated-view voting, expose bin, detector, nuisance and assumed-covariance sensitivity, require M3 to rank above M1 in both stellar visits, and return PASS / science_unresolved with origin comparison not_evaluated.",
       "stop_rule": "If plausible models remain within the evidence threshold, report unresolved.",
-      "allowed_claim": "The public data favor, or do not distinguish, the stated models."
+      "allowed_claim": "The harness reproduces the pinned GO 1981 NIRSpec water-template regressions and exposes their reduction, detector-side, influential-bin, covariance, and nuisance sensitivity; no direct planet-versus-star origin comparison is available in the deposited products."
     },
     {
       "hypothesis_id": "H-K218-CH4",

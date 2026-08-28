@@ -22,6 +22,7 @@ dependencies = [
 
 [project.scripts]
 atmosphere-benchmark = "atmosphere_benchmark.cli:main"
+gj486-benchmark = "gj486_benchmark.cli:main"
 voyager-benchmark = "voyager_benchmark.cli:main"
 
 [tool.setuptools]
@@ -32,4 +33,5 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 atmosphere_benchmark = ["data_manifest.json"]
+gj486_benchmark = ["data_manifest.json"]
 voyager_benchmark = ["data_manifest.json"]

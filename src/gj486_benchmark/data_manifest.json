@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "gj486b_nirspec_water_template_ambiguity_v1",
+  "description": "Retrospective reproduction of the published GJ 486 b NIRSpec water-template regressions with ambiguity preserved",
+  "archive": {
+    "record_version": "v3",
+    "doi": "10.5281/zenodo.10408056",
+    "url": "https://zenodo.org/api/records/10408056/files/GJ486b_Zenodo_2023.zip/content",
+    "filename": "GJ486b_Zenodo_2023.zip",
+    "size_bytes": 1455085,
+    "publisher_md5": "1f1674f4c96575d296d6e276b5920161",
+    "sha256": "b259b5e191a35c53280b58e44167760caf10881274b7ddcfa55f5d926a4ef444",
+    "license_spdx": "CC-BY-4.0",
+    "default_max_download_bytes": 3000000,
+    "hard_max_download_bytes": 20000000000,
+    "max_archive_members": 100,
+    "max_total_uncompressed_bytes": 10000000
+  },
+  "members": [
+    {
+      "role": "transmission_spectrum",
+      "path": "GJ486b_Zenodo_2023/TransmissionSpectra/GJ486b_TransmissionSpectra.txt",
+      "size_bytes": 7436,
+      "sha256": "8f39a23b236e0985f53db785bf46ae840a1e6830a73a82032643659fbe001733"
+    },
+    {
+      "role": "water_model",
+      "path": "GJ486b_Zenodo_2023/ForwardModels/GJ486b_water_model.txt",
+      "size_bytes": 27730,
+      "sha256": "3046872ef36ddc946de8eb774cfecb063650b393c86b304a9c46bcc5c9b70abc"
+    },
+    {
+      "role": "stellar_spectra_models",
+      "path": "GJ486b_Zenodo_2023/StellarSpectra/GJ486_StellarSpectraAndModels.txt",
+      "size_bytes": 941330,
+      "sha256": "96e33d11190d685942e447d08361c88bf3d58533a3f3b46eab42505d911faeca"
+    }
+  ],
+  "external_constraint": {
+    "role": "GO-1743 MIRI fixed-model ranking",
+    "archive": {
+      "record_version": "version record 13774462; concept DOI 13774461",
+      "doi": "10.5281/zenodo.13774462",
+      "url": "https://zenodo.org/api/records/13774462/files/WeinerMansfield2024.zip/content",
+      "filename": "WeinerMansfield2024.zip",
+      "size_bytes": 288070101,
+      "publisher_md5": "925936ccc37bdddbf0ba015ac1d4e4f7",
+      "sha256": "427c6272719eacf8b29864a3e0e8469d57024791eff16ce19efa8c1c9b01fca2",
+      "license_spdx": "CC-BY-4.0",
+      "default_max_download_bytes": 400000000,
+      "hard_max_download_bytes": 20000000000,
+      "max_archive_members": 10000,
+      "max_total_uncompressed_bytes": 5000000000
+    },
+    "members": [
+      {
+        "role": "miri_spectrum",
+        "path": "Figure5/gj486b_spectrum.txt",
+        "size_bytes": 309,
+        "sha256": "64628934b92acd93c2158fbd84186229ac3f2bf909c9e03f7804119776cbc75c"
+      },
+      {
+        "role": "ultramafic_model",
+        "path": "Figure5/gj486b_bare_Ultramafic_post_TOA_flux_eclipse.dat",
+        "size_bytes": 2190575,
+        "sha256": "55b15bedac12348279fc6f563d07411af5fc8796b1676303354c755e3069e538"
+      },
+      {
+        "role": "pure_h2o_1bar_model",
+        "path": "Figure5/gj486b_pure_h2o_1e6_post_TOA_flux_eclipse.dat",
+        "size_bytes": 2190575,
+        "sha256": "ca93c6dc1c0f0591a9ccb84209aeb82113d8e35a601f2a63b4f46879eec676f7"
+      },
+      {
+        "role": "blackbody_824k_model",
+        "path": "Figure5/Bp_Fs_full_res.txt",
+        "size_bytes": 66250,
+        "sha256": "624d205860554b863e1c755c8d876d5eb53bc85b0fcc4fe7d9d98e048e4ab21f"
+      }
+    ],
+    "analysis": {
+      "spectrum_rows": 22,
+      "spectrum_reduction": "SPARTA joint",
+      "smoothing": "publisher 100-point Hanning recipe",
+      "normalization_or_offset": false,
+      "expected_chi2_per_point": {
+        "ultramafic": 1.1793,
+        "blackbody_824k": 1.0461,
+        "pure_h2o_1bar": 6.3887
+      },
+      "fingerprint_tolerance": 0.001
+    },
+    "classification": "specific_thick_water_model_disfavored",
+    "claim_limit": "Reproduction of the publisher fixed-model comparison; not a general atmosphere exclusion and not transmission-spectrum evidence."
+  },
+  "program_provenance": {
+    "GO-1981": "NIRSpec/G395H transmission",
+    "GO-1743": "MIRI/LRS eclipse",
+    "GO-5866": "NIRISS/SOSS transmission"
+  },
+  "spectrum": {
+    "reductions": ["Eureka", "Firefly", "Tiberius"],
+    "columns": ["Reduction", "Wave", "Width", "Depth", "e_Depth"],
+    "units": {
+      "Wave": "micrometre",
+      "Width": "micrometre",
+      "Depth": "ppm",
+      "e_Depth": "ppm_1sigma"
+    },
+    "row_counts": {
+      "Eureka": 110,
+      "Firefly": 46,
+      "Tiberius": 47
+    }
+  },
+  "water_model": {
+    "columns": ["wavelength", "transit_depth"],
+    "row_count": 665,
+    "units": {"wavelength": "micrometre", "transit_depth": "absolute"},
+    "provenance": "PICASO 1-bar H2O atmosphere, isothermal 700 K, R=300"
+  },
+  "stellar": {
+    "columns": ["Type", "Wave", "Flux", "e_Flux"],
+    "row_counts": {"V1": 3203, "V2": 3203, "M1": 9465, "M2": 9465, "M3": 9465},
+    "model_definitions": {
+      "M1": "100% 3300 K photosphere, log(g)=4.5",
+      "M2": "75% 3400 K photosphere plus 25% 3000 K spot",
+      "M3": "55% 3200 K photosphere plus 20% 3000 K spot plus 25% 3400 K faculae"
+    },
+    "normalization_nuisance": "one fitted multiplicative factor per visit-model comparison"
+  },
+  "analysis": {
+    "minimum_wavelength_micrometres": 2.87,
+    "minimum_wavelength_inclusive": true,
+    "detector_split_micrometres": 3.8,
+    "preserve_detector_gap": true,
+    "water_model_input_units": "absolute_transit_depth",
+    "water_model_analysis_units": "ppm",
+    "template_interpolation": "linear_at_observed_centres",
+    "template_centering": "inverse_variance_weighted_mean",
+    "amplitude_signed": true,
+    "variance_model": "reported_diagonal_variances",
+    "models": {
+      "no_step_null": "c",
+      "no_step_water": "c+a*t",
+      "step_null": "c+d*I(lambda>=3.8)",
+      "step_water": "c+d*I(lambda>=3.8)+a*t"
+    },
+    "expected_filtered_rows": {
+      "Eureka": 109,
+      "Firefly": 45,
+      "Tiberius": 46
+    },
+    "expected_z": {
+      "Eureka": {"no_step": 3.52, "step": 3.07},
+      "Firefly": {"no_step": 2.07, "step": 1.15},
+      "Tiberius": {"no_step": 3.51, "step": 3.92}
+    },
+    "z_tolerance": 0.10,
+    "unit_invariance_tolerance": 1e-10,
+    "covariance_stress": {
+      "within_detector_ar1_rho": [0.25, 0.5],
+      "detector_common_mode_ppm": [20.0, 40.0],
+      "status": "non_promotional_assumed_covariance_not_reconstructed"
+    }
+  },
+  "expected_feature_state": "retrospective_template_regression_reproduced",
+  "expected_science_state": "science_unresolved",
+  "external_context": {
+    "MIRI_context": "specific_1bar_pure_H2O_model_disfavored; airless_or_thin_unresolved",
+    "NIRISS_5866": "public_archive_time_series_products; no_B2_interpretation"
+  },
+  "citations": {
+    "moran_2023": "https://doi.org/10.3847/2041-8213/accb9c",
+    "miri_2024": "https://doi.org/10.3847/2041-8213/ad8161",
+    "miri_zenodo": "https://doi.org/10.5281/zenodo.13774462",
+    "zenodo_v3": "https://doi.org/10.5281/zenodo.10408056",
+    "go_1981": "https://www.stsci.edu/jwst-program-info/program/?program=1981",
+    "go_1743": "https://www.stsci.edu/jwst-program-info/program/?program=1743",
+    "go_5866": "https://www.stsci.edu/jwst-program-info/program/?program=5866"
+  },
+  "allowed_claim": "The harness reproduces the pinned GO 1981 NIRSpec water-template regressions and exposes their reduction, detector-side, influential-bin, covariance, and nuisance sensitivity; no direct planet-versus-star origin comparison is available in the deposited products.",
+  "prohibited_claims": [
+    "planetary-atmosphere detection",
+    "water detection on GJ 486 b",
+    "independent detection or confirmation",
+    "independent evidence from correlated reductions",
+    "stellar contamination confirmed",
+    "POSEIDON posterior reproduction",
+    "NIRISS resolution of the ambiguity",
+    "definitively airless planet",
+    "habitability",
+    "biosignature",
+    "technosignature",
+    "evidence of life"
+  ]
+}

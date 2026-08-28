@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "dataset_id": "voyager1_single_coarse_fine_res",
+  "description": "Official Berkeley SETI single-coarse-channel Voyager 1 HDF5 example",
+  "filename": "Voyager1.single_coarse.fine_res.h5",
+  "url": "https://raw.githubusercontent.com/UCBerkeleySETI/turbo_seti/dbfb5e35edf6a7f384d0da9bc6da14b6bc6e0395/test/Voyager1.single_coarse.fine_res.h5",
+  "documentation_url": "https://github.com/UCBerkeleySETI/blimpy/blob/master/examples/voyager.ipynb",
+  "publisher_provenance_url": "http://blpd0.ssl.berkeley.edu/Voyager_data/Voyager1.single_coarse.fine_res.h5",
+  "size_bytes": 50549227,
+  "sha256": "c9a9a54f4140e3754ffb2455fae4eeb2eb70c8207123116ee953e4fce15c36ac",
+  "git_blob_oid": "42a41e5c2564afc8e73dc7b23cece3e3123f15d6",
+  "data_license_spdx": "NOASSERTION",
+  "checksum_provenance": "Calculated locally on 2026-08-28; matches the commit-pinned repository object and publisher-provenance URL; not publisher-signed",
+  "benchmark": {
+    "parameter_source_url": "https://github.com/UCBerkeleySETI/turbo_seti/blob/master/README.md#example-usage-as-a-python-package",
+    "min_drift_hz_per_s": 0.0,
+    "max_drift_hz_per_s": 4.0,
+    "snr_threshold": 25.0,
+    "plot_frequency_start_mhz": 8419.26,
+    "plot_frequency_stop_mhz": 8419.34,
+    "known_signal_targets": [
+      {
+        "id": "left_sideband",
+        "frequency_mhz": 8419.274374,
+        "tolerance_hz": 25.0,
+        "drift_rate_hz_per_s": -0.392226,
+        "drift_tolerance_hz_per_s": 0.02,
+        "required": true
+      },
+      {
+        "id": "carrier",
+        "frequency_mhz": 8419.297028,
+        "tolerance_hz": 25.0,
+        "drift_rate_hz_per_s": -0.373093,
+        "drift_tolerance_hz_per_s": 0.02,
+        "required": true
+      },
+      {
+        "id": "right_sideband",
+        "frequency_mhz": 8419.319368,
+        "tolerance_hz": 25.0,
+        "drift_rate_hz_per_s": -0.392226,
+        "drift_tolerance_hz_per_s": 0.02,
+        "required": true
+      }
+    ],
+    "carrier_must_be_strongest": true
+  }
+}

@@ -1,0 +1,15 @@
+.venv/
+.DS_Store
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Downloaded observations and generated benchmark artifacts are reproducible.
+data/*.h5
+data/*.fil
+data/*.part
+artifacts/

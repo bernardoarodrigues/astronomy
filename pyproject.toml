@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=75,<81"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voyager-radio-benchmark"
+version = "0.1.0"
+description = "A reproducible known-signal recovery benchmark for Voyager 1 radio data"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+  "blimpy==2.1.4",
+  "h5py>=3.10,<4",
+  "matplotlib>=3.8,<3.11",
+  "numpy>=1.26,<2.3",
+  # blimpy 2.1.4 imports pkg_resources, removed from newer setuptools.
+  "setuptools>=75,<81",
+  "turbo-seti==2.3.2",
+]
+
+[project.scripts]
+voyager-benchmark = "voyager_benchmark.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+voyager_benchmark = ["data_manifest.json"]

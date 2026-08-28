@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "voyager-radio-benchmark"
 version = "0.1.0"
-description = "A reproducible known-signal recovery benchmark for Voyager 1 radio data"
+description = "Reproducible radio-signal and exoplanet-atmosphere benchmarks"
 readme = "README.md"
 requires-python = ">=3.10,<3.14"
 license = "MIT"
@@ -21,6 +21,7 @@ dependencies = [
 ]
 
 [project.scripts]
+atmosphere-benchmark = "atmosphere_benchmark.cli:main"
 voyager-benchmark = "voyager_benchmark.cli:main"
 
 [tool.setuptools]
@@ -30,4 +31,5 @@ package-dir = { "" = "src" }
 where = ["src"]
 
 [tool.setuptools.package-data]
+atmosphere_benchmark = ["data_manifest.json"]
 voyager_benchmark = ["data_manifest.json"]

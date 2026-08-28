@@ -101,11 +101,11 @@ sink tests before the phrase “potential biosignature” could be considered.
 
 ### Milestone B — smallest atmospheric proof of method
 
-1. Recover WASP-39 b's strong CO2 feature from a published spectrum.
-2. Reproduce the GJ 486 b planet-versus-starspot model comparison.
-3. Run the identical retrieval harness on synthetic spectra with hidden truth.
-4. Only then run the frozen K2-18 b CH4 and CO2 replication.
-5. Treat the K2-18 b DMS/DMDS exercise as an adversarial model-comparison test,
+- [x] Recover WASP-39 b's strong CO2 feature from a published spectrum.
+- [ ] Reproduce the GJ 486 b planet-versus-starspot model comparison.
+- [ ] Run the identical retrieval harness on synthetic spectra with hidden truth.
+- [ ] Only then run the frozen K2-18 b CH4 and CO2 replication.
+- [ ] Treat the K2-18 b DMS/DMDS exercise as an adversarial model-comparison test,
    not a search optimized to recover sulfur.
 
 ### Milestone C — radio classification

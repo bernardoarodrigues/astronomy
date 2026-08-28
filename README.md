@@ -18,11 +18,14 @@ claims, nulls, confounders, gates, and stopping rules.
 ## Current state
 
 - **Radio positive control — complete:** all three documented Voyager features
-  were recovered from the guarded 50 MB input; the 18-test suite passes.
+  were recovered from the guarded 50 MB input; the full regression suite
+  passes.
 - **Radio cadence validation — planned:** the compact 1.45 GB HIP 56242
   ABACAD set is documented but has not been downloaded.
-- **Atmospheric positive/negative controls — planned:** begin with published
-  spectra, not raw telescope ramps, for WASP-39 b and GJ 486 b.
+- **Atmospheric positive control — complete:** the isolated WASP-39 b harness
+  recovers the frozen 4.3 µm feature in the published FIREFLy spectrum with
+  leave-one-out, assumed-covariance, scale-invariance, and null-calibration
+  checks. GJ 486 b remains a planned negative control.
 - **K2-18 b — retrospective replication only:** methane is the strongest
   published atmospheric result; CO2 is less independently mature; DMS/DMDS,
   an ocean, a technosignature, and life are not established.
@@ -30,6 +33,27 @@ claims, nulls, confounders, gates, and stopping rules.
 Each evidence track gets its own manifests, dependencies, results, and claim
 gates. Success means a reproducible, calibrated answer—including a null—not a
 candidate.
+
+## Milestone B1 — atmospheric positive control
+
+The separate `atmosphere_benchmark` package and `atmosphere-benchmark` CLI use
+a pinned 375 KB Zenodo v1 archive rather than raw JWST detector products. The
+benchmark fits a frozen linear baseline and signed 4.3 µm feature to exactly 20
+published FIREFLy bins, then runs leave-one-out, ppm-scale invariance, assumed
+covariance stress, and 10,000-draw null-calibration checks.
+
+```bash
+uv sync
+uv run atmosphere-benchmark download
+uv run atmosphere-benchmark extract
+uv run atmosphere-benchmark verify
+uv run atmosphere-benchmark run
+```
+
+See [`docs/ATMOSPHERE_BENCHMARK.md`](docs/ATMOSPHERE_BENCHMARK.md) for frozen
+inputs, equations, acceptance bands, citations, artifact contract, and strict
+claim limitations. This positive control does not alter the Voyager package or
+its commands.
 
 ## Phase 1 — Voyager benchmark
 
@@ -114,17 +138,17 @@ uv run voyager-benchmark run --input /path/to/data/Voyager1.single_coarse.fine_r
 
 ## Tests (no astronomy download required)
 
-The unit suite uses in-memory HTTP responses, temporary files, and a tiny
-synthetic turboSETI `.dat` fixture. It imports no scientific package and never
-downloads the 50 MB sample:
+The unit suite uses in-memory HTTP responses, temporary files, generated
+spectra, safe-extraction fixtures, and a tiny synthetic turboSETI `.dat`
+fixture. It never downloads either benchmark dataset:
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests -v
+uv run python -m unittest discover -s tests -v
 ```
 
 The suite exercises manifest validation, all size guards, streamed overflow,
-checksum failure, atomic success/cache behavior, hit parsing, and known-target
-evaluation.
+checksum failure, safe extraction, atomic success/cache behavior, spectral
+model recovery and negative cases, hit parsing, and known-target evaluation.
 
 ## Benchmark scope
 

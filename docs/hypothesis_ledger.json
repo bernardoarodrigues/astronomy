@@ -54,13 +54,13 @@
       "layer": "molecule",
       "selection_status": "positive_control",
       "exact_claim": "The atmospheric harness recovers the published strong carbon-dioxide feature from a frozen WASP-39 b spectrum.",
-      "status": "untested",
+      "status": "supported",
       "null_hypothesis": "The harness cannot distinguish the CO2 model from the frozen molecule-free alternatives.",
       "competing_hypotheses": ["model misspecification", "instrument offsets", "cloud or haze continuum"],
       "test": "Fit a published spectrum with frozen CO2 and control models before any K2-18 b retrieval.",
       "success_gate": "Recovery and uncertainty calibration pass the preregistered positive-control protocol.",
       "stop_rule": "Do not interpret weaker target spectra until this control passes.",
-      "allowed_claim": "The harness reproduces a published atmospheric positive control."
+      "allowed_claim": "The harness recovers the pinned published 4.3-micrometre feature, consistent with the CO2 band identified by the JWST ERS team; this is not an independent detection."
     },
     {
       "hypothesis_id": "H-GJ486-ORIGIN",

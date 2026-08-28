@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "wasp39b_firefly_4p3um_positive_control",
+  "description": "Positive-control recovery of the published 4.3-micron feature in the pinned FIREFLy WASP-39 b transmission spectrum",
+  "archive": {
+    "record_version": "v1",
+    "doi": "10.5281/zenodo.6959427",
+    "url": "https://zenodo.org/api/records/6959427/files/JWST_ERS_1st_LOOK_PAPER_DATA.zip/content",
+    "filename": "JWST_ERS_1st_LOOK_PAPER_DATA.zip",
+    "size_bytes": 375091,
+    "publisher_md5": "578368eb0c86014462f109d1e8699693",
+    "sha256": "5f69e0279885104b49593aea7523903118895a0dadaaff47a5f6a1beda82f7fb",
+    "license_spdx": "CC-BY-4.0",
+    "default_max_download_bytes": 2000000,
+    "hard_max_download_bytes": 20000000000,
+    "max_archive_members": 100,
+    "max_total_uncompressed_bytes": 5000000
+  },
+  "members": [
+    {
+      "role": "primary_spectrum",
+      "path": "ZENODO/TRANSMISSION_SPECTRA_DATA/FIREFLY_REDUCTION.txt",
+      "size_bytes": 7833,
+      "sha256": "83e5e45d5867f1abe6a8776469d4284daf2630f66b7f67736453d912a6bfdd27"
+    },
+    {
+      "role": "attribution_full_model",
+      "path": "ZENODO/MODEL_FITS/ScCHIMERA_MODEL.txt",
+      "size_bytes": 10985,
+      "sha256": "45d014400577a5208f9f699a7811c0cc95aeb2c4f308583db9e90297f35cca1d"
+    },
+    {
+      "role": "attribution_no_co2_model",
+      "path": "ZENODO/MODEL_FITS/ScCHIMERA_MODEL_noCO2.txt",
+      "size_bytes": 4778,
+      "sha256": "7d41ab15efb4350ecce93f7e646d86cf4bd0fdab559f567d8e3dac51374ff004"
+    }
+  ],
+  "spectrum": {
+    "columns": [
+      "wv_center",
+      "transit_depth",
+      "wv_wdth",
+      "tran_unc"
+    ],
+    "row_count": 95,
+    "units": {
+      "wv_center": "micrometre",
+      "transit_depth": "absolute",
+      "wv_wdth": "micrometre",
+      "tran_unc": "absolute_1sigma"
+    }
+  },
+  "analysis": {
+    "window_micrometres": [4.1, 4.6],
+    "window_inclusive": true,
+    "expected_window_rows": 20,
+    "rebinning": false,
+    "pivot_micrometres": 4.3,
+    "feature_sigma_micrometres": 0.1,
+    "amplitude_signed": true,
+    "variance_model": "reported_diagonal_variances",
+    "expected_fingerprint": {
+      "amplitude": 0.0015007,
+      "z": 15.51,
+      "delta_chi2": 240.5
+    },
+    "acceptance": {
+      "amplitude": [0.00148, 0.00152],
+      "z": [15.3, 15.7],
+      "delta_chi2": [235.0, 246.0],
+      "leave_one_out_minimum_z": 10.0,
+      "ppm_invariance_tolerance": 1e-10
+    },
+    "covariance_stress": {
+      "rho": [0.25, 0.5],
+      "ell_median_bin_width_multipliers": [1.0, 2.0],
+      "minimum_z": 5.0,
+      "minimum_delta_chi2": 25.0,
+      "status": "assumed_stress_models_not_reconstructed_covariance"
+    },
+    "null_monte_carlo": {
+      "draws": 10000,
+      "seed": 6959427,
+      "absolute_mean_z_max": 0.03,
+      "std_z": [0.97, 1.03],
+      "two_sided_1p96_fraction": [0.04, 0.06]
+    }
+  },
+  "citations": {
+    "zenodo": "https://doi.org/10.5281/zenodo.6959427",
+    "nature": "https://doi.org/10.1038/s41586-022-05269-w",
+    "stsci_ers_1366": "https://www.stsci.edu/jwst/science-execution/approved-programs/dd-ers/program-1366",
+    "mast": "https://doi.org/10.17909/3tmh-4209"
+  },
+  "allowed_claim": "The harness recovers a strong, correctly located 4.3-µm feature in the pinned published FIREFLy spectrum, consistent with the CO2 band identified by the JWST ERS team.",
+  "prohibited_claims": [
+    "independent detection or confirmation",
+    "reproduction of the paper's 26-sigma result",
+    "abundance or metallicity inference",
+    "validation of raw JWST reduction",
+    "general atmospheric-retrieval validity",
+    "habitability",
+    "biosignature",
+    "technosignature",
+    "evidence of life"
+  ]
+}

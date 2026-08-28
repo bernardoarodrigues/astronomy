@@ -13,3 +13,5 @@ data/*.h5
 data/*.fil
 data/*.part
 artifacts/
+data/atmosphere/
+work/wasp39-source/*.zip

@@ -1,0 +1,342 @@
+{
+  "protocol_manifest_sha256": "0a57f12bffb436879d7a4905f3dc9ce5311561935e0a85fb0d0e4c58f5024a29",
+  "overall_status": "PARTIAL",
+  "execution_status_scope": "detector_and_spec2_engineering_only",
+  "pipeline_execution_status": "COMPLETE",
+  "protocol_conformance": "NONCONFORMING",
+  "prospective_protocol_status": "POST_EXECUTION_RECONSTRUCTION_NOT_PREREGISTERED",
+  "branch_id": "both_stage_clean_fit_profile",
+  "environment": {
+    "jwst_version": "3.0.0",
+    "crds_context": "jwst_1584.pmap",
+    "python_version": "CPython 3.12.14",
+    "dependency_snapshot_sha256": "a746c3e9bca763539dc1cf486113f996571ab9952e9f66295d1f407acf660cde",
+    "config_sha256": "eedd9e1ffe86a8a877b3b09b7971895ccdb31d1b0421dbee8f873accdcbd2d68",
+    "context_pmap_sha256": "76fed17d61a74f42787b0fdb949e9e68aaaef3b8895eb4ef867b7cedf96c0268",
+    "nirspec_imap_sha256": "1e8d19a5dfb6083ace4032a947fab39a13c905f310e51508ca78afdf5a1db396"
+  },
+  "calibration_references": [
+    {
+      "cal_step": "extract_1d_apcorr",
+      "reference_name": "jwst_nirspec_apcorr_0003.fits",
+      "size_bytes": 8121600,
+      "sha256": "d90f26c96fa928f89df1394c2368a431646fea81d0297378ece5ca332d5e3258"
+    },
+    {
+      "cal_step": "assign_wcs_camera",
+      "reference_name": "jwst_nirspec_camera_0010.asdf",
+      "size_bytes": 7030,
+      "sha256": "ef50eeb240c7ff508463f293017866c3b0d635b4974db0650a29ce0d0007fb56"
+    },
+    {
+      "cal_step": "assign_wcs_collimator",
+      "reference_name": "jwst_nirspec_collimator_0010.asdf",
+      "size_bytes": 7081,
+      "sha256": "872bc7811d8dca56b2f4a4fbdd06be9122ef31a26c9979b5317267f9268e56f9"
+    },
+    {
+      "cal_step": "dark_current",
+      "reference_name": "jwst_nirspec_dark_0470.fits",
+      "size_bytes": 630492480,
+      "sha256": "ffd4c1abefcbb962d0658a403dd0bc274341563865d04e72098403bb34251efb"
+    },
+    {
+      "cal_step": "assign_wcs_disperser",
+      "reference_name": "jwst_nirspec_disperser_0083.asdf",
+      "size_bytes": 2567,
+      "sha256": "230d7907bd39ae52191709f9fe18c37f869db2a9f756da8e2c3c5da3ddc833a2"
+    },
+    {
+      "cal_step": "extract_1d",
+      "reference_name": "jwst_nirspec_extract1d_0006.json",
+      "size_bytes": 827,
+      "sha256": "86cc4bd1f293cb33166c1ed18b1121b44af62c77cf2bfb306ee7c4ec80823bab"
+    },
+    {
+      "cal_step": "assign_wcs_fore",
+      "reference_name": "jwst_nirspec_fore_0065.asdf",
+      "size_bytes": 17307,
+      "sha256": "0c0facaddd89da16894a25d45da2172bfc7ff31afc640c34ece8ccf262949dbd"
+    },
+    {
+      "cal_step": "assign_wcs_fpa",
+      "reference_name": "jwst_nirspec_fpa_0011.asdf",
+      "size_bytes": 5337,
+      "sha256": "cb3eb51558cb34518c998c9afec45fc9840594d3aeeca5d0e4b34734d0bf1a4b"
+    },
+    {
+      "cal_step": "ramp_fit_gain",
+      "reference_name": "jwst_nirspec_gain_0027.fits",
+      "size_bytes": 2108160,
+      "sha256": "02ae2c87a9d48b075ac2bd7763551cc01fb445c8ae3370c7714f453cad1adace"
+    },
+    {
+      "cal_step": "linearity",
+      "reference_name": "jwst_nirspec_linearity_0023.fits",
+      "size_bytes": 14932800,
+      "sha256": "4f775e6cef7ed7df71d4c231af9766d63359e08442b3f5012aa155e5467beb31"
+    },
+    {
+      "cal_step": "dq_init_mask",
+      "reference_name": "jwst_nirspec_mask_0095.fits",
+      "size_bytes": 16793280,
+      "sha256": "0bbbd655484a9cdf9f3f50beced99da0fe6730956a88dcb143962a26bc2da697"
+    },
+    {
+      "cal_step": "assign_wcs_msa",
+      "reference_name": "jwst_nirspec_msa_0011.asdf",
+      "size_bytes": 4999899,
+      "sha256": "a5b39ef9cb081d22ab1c7e7d15b0f3b9a99f52e02dec0b1fad7542633e613117"
+    },
+    {
+      "cal_step": "assign_wcs_ote",
+      "reference_name": "jwst_nirspec_ote_0013.asdf",
+      "size_bytes": 7614,
+      "sha256": "f07f83801fad3c29de211d1d510ea07792c146a333497a5c78ec67773440a9fe"
+    },
+    {
+      "cal_step": "pipeline_parameters_clean_flicker_noise",
+      "reference_name": "jwst_nirspec_pars-cleanflickernoisestep_0002.asdf",
+      "size_bytes": 1340,
+      "sha256": "272b03a2d6fcfc10875250b29a456377b1997d9dfa0ec85a639ab40aff3547d6"
+    },
+    {
+      "cal_step": "pipeline_parameters_detector1",
+      "reference_name": "jwst_nirspec_pars-detector1pipeline_0006.asdf",
+      "size_bytes": 2025,
+      "sha256": "8adadd097ad875140b39bdd2fdb5fd3d30b6aca61c1bc5b3627a67ed9ff9b434"
+    },
+    {
+      "cal_step": "pipeline_parameters_jump",
+      "reference_name": "jwst_nirspec_pars-jumpstep_0004.asdf",
+      "size_bytes": 1897,
+      "sha256": "9d7cabd377ee1300258deb3a14f9edbf020b27be8f01fabca7251a8e7c2d95b5"
+    },
+    {
+      "cal_step": "pipeline_parameters_resample_spec",
+      "reference_name": "jwst_nirspec_pars-resamplespecstep_0001.asdf",
+      "size_bytes": 1009,
+      "sha256": "996a096bce2da872bda3e9876734d2b8a8c54b98da96bfe180edaaf03e4e0c95"
+    },
+    {
+      "cal_step": "pipeline_parameters_spec2",
+      "reference_name": "jwst_nirspec_pars-spec2pipeline_0024.asdf",
+      "size_bytes": 2537,
+      "sha256": "15e2f489330bce060c5fb47fb9641ffe61fd0688df605e36d40af723eea2c706"
+    },
+    {
+      "cal_step": "ramp_fit_readnoise",
+      "reference_name": "jwst_nirspec_readnoise_0048.fits",
+      "size_bytes": 4210560,
+      "sha256": "997a3d8e8edde2ddbf118e4db66886173cbde631ca5efc73550a9a793d07c7fc"
+    },
+    {
+      "cal_step": "saturation",
+      "reference_name": "jwst_nirspec_saturation_0029.fits",
+      "size_bytes": 6413760,
+      "sha256": "69c5ea7765b2e5cef095fbd3e9f4afc075e1caec2b582c09523561919aefab52"
+    },
+    {
+      "cal_step": "jump_sirs_kernel",
+      "reference_name": "jwst_nirspec_sirskernel_0001.asdf",
+      "size_bytes": 133402,
+      "sha256": "de7f4f864c64023e214975087a06810a506b9a1dc0d0c8b7ccb349fedcac1469"
+    },
+    {
+      "cal_step": "superbias",
+      "reference_name": "jwst_nirspec_superbias_0474.fits",
+      "size_bytes": 815040,
+      "sha256": "93996be9c8952de202b66e2935064faea0d456fc8929d41d212fb26169b6f6f1"
+    },
+    {
+      "cal_step": "wavecorr",
+      "reference_name": "jwst_nirspec_wavecorr_0003.asdf",
+      "size_bytes": 76862,
+      "sha256": "d0f2982fb065f8fad9202a5fa7824c9f8fb89693adc055829c06def3ec5093b3"
+    },
+    {
+      "cal_step": "assign_wcs_wavelength_range",
+      "reference_name": "jwst_nirspec_wavelengthrange_0008.asdf",
+      "size_bytes": 2957,
+      "sha256": "e20fee949f69898d78b61375a8fbf146b7921354a94846a41825a2db2f2e4a86"
+    }
+  ],
+  "warnings_or_errors": [
+    {
+      "code": "POST_RUN_CONFIG_RECONSTRUCTION",
+      "scope": "all_segments",
+      "disposition": "Six contemporaneous resolved pipeline logs are authoritative; the saved config and environment snapshots were reconstructed after engineering execution and before wavelength-science access."
+    },
+    {
+      "code": "DETECTOR1_SINGLE_MASK_OVERRIDE",
+      "scope": "all_segments",
+      "disposition": "Expected jwst 3.0.0 behavior: requested true and effective false because median_image requires a draft rateints product."
+    },
+    {
+      "code": "BAD_LIN_CORR_MNEMONIC_IGNORED",
+      "scope": "all_segments",
+      "disposition": "A post-run metadata check evaluated count_nonzero((DQ.astype(uint64) & uint64(8)) != 0) over all 532480 pixels in the selected linearity-reference DQ extension and found zero set pixels; raw equality was not used and no science flux was inspected."
+    },
+    {
+      "code": "CRDS_UNKNOWN_PARS_TARGCENTROIDSTEP",
+      "scope": "all_segments_spec2",
+      "disposition": "Logged as a CRDS error but nonfatal for this BOTS path; targ_centroid was not used and all selected pipeline paths completed."
+    },
+    {
+      "code": "AUXILIARY_CLEAN_PRODUCTS_NOT_SAVED",
+      "scope": "all_segments_both_cleaning_stages",
+      "disposition": "Mask, background, and noise cubes were not retained; this is a protocol-conformance and engineering-QC limitation."
+    },
+    {
+      "code": "RELATIVE_BRANCH_SKIPS",
+      "scope": "all_segments_spec2",
+      "disposition": "Background subtraction, flat-field, and photom were skipped by the selected relative time-series branch; the BOTS background skip is expected, while all remain part of the science-readiness boundary."
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "seg001",
+      "input_verification": {
+        "status": "VERIFIED",
+        "observed_size_bytes": 1461867840,
+        "observed_sha256": "a5e880e3bd470d76412a3044994644208f4c7e67843a50dc4ccc6eacdca2c600"
+      },
+      "stages": {
+        "detector1": {
+          "status": "COMPLETE",
+          "runtime_seconds": 161.4,
+          "peak_rss_bytes": 15249588224,
+          "outputs": [
+            {"name": "jw02372005001_04102_00001-seg001_nrs2_rate.fits", "size_bytes": 1399680, "sha256": "a6030eadf4969a3845291447b3527100ad703160925cae7d591e4420283933bf"},
+            {"name": "jw02372005001_04102_00001-seg001_nrs2_rateints.fits", "size_bytes": 913694400, "sha256": "26d15feeb59ddd35e2fd4846f65b34cbd838b35c1e37b9b0c20d9fc0ad088ea0"},
+            {"name": "seg001-detector1.log", "size_bytes": 26570, "sha256": "d08014e251644857582524cc54914135855efe7769454533255468b4627382b9"}
+          ]
+        },
+        "spec2": {
+          "status": "COMPLETE",
+          "runtime_seconds": 98.57,
+          "peak_rss_bytes": 5339332608,
+          "outputs": [
+            {"name": "jw02372005001_04102_00001-seg001_nrs2_calints.fits", "size_bytes": 914250240, "sha256": "d08e469a83aadf597c63a162858ddf25468a2dba5f073dc9ee63e647638ea84a"},
+            {"name": "jw02372005001_04102_00001-seg001_nrs2_x1dints.fits", "size_bytes": 200203200, "sha256": "f375f9118e0db0c2bda4d0df049e1e6e74b002a68bedc1fdae0a31b84f693dfd"},
+            {"name": "seg001-spec2.log", "size_bytes": 121884, "sha256": "5da8fa5929a9ea360148948dac91e334790019c500a5da369a81321b682d418a"}
+          ]
+        },
+        "engineering_qc": {
+          "status": "NOT_RUN",
+          "runtime_seconds": null,
+          "peak_rss_bytes": null,
+          "outputs": []
+        }
+      },
+      "cal_step_statuses": {
+        "detector1_clean_flicker_noise": "COMPLETE",
+        "spec2_background_subtraction": "SKIPPED",
+        "spec2_clean_flicker_noise": "COMPLETE",
+        "spec2_pixel_replace": "COMPLETE",
+        "spec2_extract_1d": "COMPLETE",
+        "tso3_pixel_replace": "NOT_RUN"
+      }
+    },
+    {
+      "segment_id": "seg002",
+      "input_verification": {
+        "status": "VERIFIED",
+        "observed_size_bytes": 1459771200,
+        "observed_sha256": "da600d989d378ee415700c06760cd1929fdf3e8cba9b5053029660fe6a14b3e2"
+      },
+      "stages": {
+        "detector1": {
+          "status": "COMPLETE",
+          "runtime_seconds": 217.6,
+          "peak_rss_bytes": 15261794304,
+          "outputs": [
+            {"name": "jw02372005001_04102_00001-seg002_nrs2_rate.fits", "size_bytes": 1402560, "sha256": "bb6b8188edecdaf7b07d324303701da581c2e82f59c8d4f8dc50e50bc008ad3f"},
+            {"name": "jw02372005001_04102_00001-seg002_nrs2_rateints.fits", "size_bytes": 912386880, "sha256": "baf5168e166f776a7715457df66fedcc0386bcef6d2543f53e44976b22b6cad1"},
+            {"name": "seg002-detector1.log", "size_bytes": 29262, "sha256": "874e9c83c6f44cd36a1e19facce85685fc51717a6cd299707967188ae141de8a"}
+          ]
+        },
+        "spec2": {
+          "status": "COMPLETE",
+          "runtime_seconds": 97.38,
+          "peak_rss_bytes": 5344919552,
+          "outputs": [
+            {"name": "jw02372005001_04102_00001-seg002_nrs2_calints.fits", "size_bytes": 912942720, "sha256": "991b11381707a7f972a8c7f4be900b2b274fc0c7cff932cd11100077ef0b30ca"},
+            {"name": "jw02372005001_04102_00001-seg002_nrs2_x1dints.fits", "size_bytes": 199920960, "sha256": "87a14982569bfd26e6049d77afaed5eb82ea4ee1cb42f43cb7e995f2fe2eae1d"},
+            {"name": "seg002-spec2.log", "size_bytes": 122660, "sha256": "43991ef16f44de7f10c367f00a16e771db6328acc538466af3b3b678b8fc8f95"}
+          ]
+        },
+        "engineering_qc": {
+          "status": "NOT_RUN",
+          "runtime_seconds": null,
+          "peak_rss_bytes": null,
+          "outputs": []
+        }
+      },
+      "cal_step_statuses": {
+        "detector1_clean_flicker_noise": "COMPLETE",
+        "spec2_background_subtraction": "SKIPPED",
+        "spec2_clean_flicker_noise": "COMPLETE",
+        "spec2_pixel_replace": "COMPLETE",
+        "spec2_extract_1d": "COMPLETE",
+        "tso3_pixel_replace": "NOT_RUN"
+      }
+    },
+    {
+      "segment_id": "seg003",
+      "input_verification": {
+        "status": "VERIFIED",
+        "observed_size_bytes": 1459771200,
+        "observed_sha256": "8461c14c6d47d594764c539041606710095d047012565489c3f6c1916f5abb3f"
+      },
+      "stages": {
+        "detector1": {
+          "status": "COMPLETE",
+          "runtime_seconds": 163.18,
+          "peak_rss_bytes": 14823489536,
+          "outputs": [
+            {"name": "jw02372005001_04102_00001-seg003_nrs2_rate.fits", "size_bytes": 1399680, "sha256": "4361878ced02e014b90ed8ddb56e4f18b91746b24a218619dd9eedc396c66f07"},
+            {"name": "jw02372005001_04102_00001-seg003_nrs2_rateints.fits", "size_bytes": 912384000, "sha256": "53528fb0c48c731e9c30f1e6bb7bf5e23ea930b9db2d850ba17c2c3d6fed0a5f"},
+            {"name": "seg003-detector1.log", "size_bytes": 26571, "sha256": "ef1cb2d35acf5401d0b016bcfed073ad34c10e39047f5451894e7d78720f3b07"}
+          ]
+        },
+        "spec2": {
+          "status": "COMPLETE",
+          "runtime_seconds": 97.99,
+          "peak_rss_bytes": 5339004928,
+          "outputs": [
+            {"name": "jw02372005001_04102_00001-seg003_nrs2_calints.fits", "size_bytes": 912939840, "sha256": "8e0fa0aa8a9e09363fa08978a469172a15cc3099dfb575fa016f2ad0306e6941"},
+            {"name": "jw02372005001_04102_00001-seg003_nrs2_x1dints.fits", "size_bytes": 199918080, "sha256": "6b749db4530af9252cd7ca807a8cb0729f80e2d96d81f7ffde9e93b62aa1a095"},
+            {"name": "seg003-spec2.log", "size_bytes": 121765, "sha256": "e2797b4adc9463413e382efe37ad8c1b14732b72ded8c1245f431885e43eb124"}
+          ]
+        },
+        "engineering_qc": {
+          "status": "NOT_RUN",
+          "runtime_seconds": null,
+          "peak_rss_bytes": null,
+          "outputs": []
+        }
+      },
+      "cal_step_statuses": {
+        "detector1_clean_flicker_noise": "COMPLETE",
+        "spec2_background_subtraction": "SKIPPED",
+        "spec2_clean_flicker_noise": "COMPLETE",
+        "spec2_pixel_replace": "COMPLETE",
+        "spec2_extract_1d": "COMPLETE",
+        "tso3_pixel_replace": "NOT_RUN"
+      }
+    }
+  ],
+  "current_state": {
+    "wavelength_dependent_morphology": "NOT_RUN",
+    "science_status": "NOT_RUN",
+    "molecule": "NOT_EVALUATED",
+    "atmosphere": "NOT_EVALUATED",
+    "origin": "NOT_EVALUATED",
+    "biosignature": "NOT_EVALUATED",
+    "evidence_of_life": false,
+    "b3_complete": false,
+    "b3b_complete": false,
+    "real_data_readiness": false
+  }
+}

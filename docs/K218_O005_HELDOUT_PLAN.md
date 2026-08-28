@@ -9,11 +9,12 @@ claim-bearing Stage-3 analysis before any wavelength-dependent flux or depth
 was examined.
 
 The archived `x1dints` primary header records JWST pipeline `2.0.1`, CRDS
-context `jwst_1535.pmap`, and all three directly relevant steps as `SKIPPED`:
+context `jwst_1535.pmap`, and three directly relevant steps as `SKIPPED`:
 
 - `S_CLNFNS`: flicker/1/f-noise cleaning;
 - `S_PXREPL`: replacement of flagged pixels before extraction;
-- `S_BKDSUB`: background subtraction.
+- `S_BKDSUB`: pipeline background subtraction, expected for standard BOTS
+  without a background association member.
 
 STScI warns that uncorrected NIRSpec/BOTS 1/f noise can materially increase
 time-series scatter and appear as irregular wavelength-dependent undulations,
@@ -21,9 +22,27 @@ especially on NRS2. It also warns that omitted pixel replacement can leave
 spurious one-pixel absorption features. Both failure modes overlap the proposed
 NRS2 4.3-micrometre morphology test. The standard product is therefore useful
 for engineering exploration, but it cannot support a claim-bearing result.
+The background skip is not itself a pipeline error; any custom off-trace
+background treatment must be separately frozen and validated.
 
 No o005 wavelength-dependent morphology was fitted. The outcome is
 `NOT_RUN / BLOCKED`, not a positive, negative, or null science result.
+
+## Detector engineering update
+
+All three public NRS2 `uncal` segments subsequently completed a serial
+Detector1 and Spec2 run under `jwst==3.0.0` and `jwst_1584.pmap`. Both 1/f
+cleaning stages ran, Spec2 `fit_profile` pixel replacement and extraction ran,
+and the three output headers cover integrations 1-2089 continuously. The exact
+as-run hashes and limitations are in
+[`K218_O005_DETECTOR_EXECUTION.md`](K218_O005_DETECTOR_EXECUTION.md).
+
+This is not a held-out science result. The as-run configuration was
+reconstructed from logs after engineering execution, auxiliary cleaning cubes
+were not saved, and detector/time-series engineering QC was not run. The
+record is therefore `pipeline_execution=COMPLETE`, overall `PARTIAL`, and
+`protocol_conformance=NONCONFORMING`; wavelength morphology and science remain
+`NOT_RUN`.
 
 ## Frozen public inventory
 
@@ -50,7 +69,7 @@ a future reader must select NRS2 from extension headers, specifically versions
 The final planned GO-2372 G395H visit, observation o006, remains under exclusive
 access until 2026-12-10. It is not used here.
 
-## Deferred detector-level protocol
+## Remaining detector-level and science protocol
 
 The future test is a separate prospective hypothesis,
 `H-K218-O005-G395H-MORPH`. It must never be appended silently to the already
@@ -58,9 +77,9 @@ executed C2/C3 test.
 
 Before opening wavelength-dependent results:
 
-1. Start from o005 NRS2 `uncal` data and run group-level
-   `clean_flicker_noise`; run pixel replacement before extraction and record the
-   exact JWST/CRDS/environment hashes.
+1. Freeze a contemporaneous invocation file and locked runtime environment;
+   repeat only if needed after non-spectral detector/time-series QC and retain
+   the diagnostic products required to validate cleaning.
 2. Freeze several extraction widths and treat them, plus the archived Stage-3
    spectrum, as correlated views of one visit. Never combine their z-scores or
    count them as independent evidence.
@@ -90,13 +109,11 @@ C2/C3 contradiction, complete B3/B3b, or support a biosignature or life claim.
 
 ## Storage decision
 
-The held-out Stage-3 bundle is under 1 GB. The public NRS2 `uncal`, `rateints`,
-`calints`, `crfints`, and per-segment `x1dints` products total about 14.3 GB,
-before the 0.97 GB combined Stage-3 bundle, CRDS files, and local outputs. The
-existing 20 GB ceiling is sufficient only with staged cleanup. Raising it to
-40 GB would be justified if the detector-level experiment needs to retain
-multiple full reduction variants and calibration caches; storage is not the
-current blocker, so the ceiling was not changed.
+The completed staged primary inputs, CRDS cache, outputs, and logs occupied
+about 11.35 GB of allocated disk. The existing 20 GB ceiling remained
+sufficient. Raising it to 40 GB is justified only if a corrected freeze needs
+to retain multiple full reduction variants or diagnostic cubes; storage is not
+the current scientific blocker, so the ceiling was not changed.
 
 References:
 

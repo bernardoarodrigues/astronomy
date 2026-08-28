@@ -1,0 +1,482 @@
+{
+  "schema_version": 1,
+  "frozen_date_utc": "2026-08-28",
+  "protocol_id": "k218-go2372-o005-detector-engineering-v1",
+  "scope": {
+    "program_id": "GO-2372",
+    "observation_number": "005",
+    "target": "K2-18",
+    "instrument": "NIRSpec",
+    "detector": "NRS2",
+    "mode": "BOTS G395H/F290LP S1600A1 SUB2048",
+    "evidence_units": 1,
+    "purpose": "detector_reduction_engineering_only",
+    "wavelength_dependent_values_may_be_analyzed": false
+  },
+  "inputs": [
+    {
+      "segment_id": "seg001",
+      "uri": "mast:JWST/product/jw02372005001_04102_00001-seg001_nrs2_uncal.fits",
+      "size_bytes": 1461867840,
+      "sha256": "a5e880e3bd470d76412a3044994644208f4c7e67843a50dc4ccc6eacdca2c600",
+      "sha256_source": "locally_computed_full_file",
+      "git_policy": "excluded_source_payload"
+    },
+    {
+      "segment_id": "seg002",
+      "uri": "mast:JWST/product/jw02372005001_04102_00001-seg002_nrs2_uncal.fits",
+      "size_bytes": 1459771200,
+      "sha256": "da600d989d378ee415700c06760cd1929fdf3e8cba9b5053029660fe6a14b3e2",
+      "sha256_source": "locally_computed_full_file",
+      "git_policy": "excluded_source_payload"
+    },
+    {
+      "segment_id": "seg003",
+      "uri": "mast:JWST/product/jw02372005001_04102_00001-seg003_nrs2_uncal.fits",
+      "size_bytes": 1459771200,
+      "sha256": "8461c14c6d47d594764c539041606710095d047012565489c3f6c1916f5abb3f",
+      "sha256_source": "locally_computed_full_file",
+      "git_policy": "excluded_source_payload"
+    }
+  ],
+  "environment": {
+    "python_package": "jwst==3.0.0",
+    "jwst_version": "3.0.0",
+    "crds_context": "jwst_1584.pmap",
+    "crds_server_url": "https://jwst-crds.stsci.edu",
+    "pipeline_invocation": "PipelineClass.call",
+    "forbid_constructor_defaults_as_record": true,
+    "require_recorded_config_and_environment_hashes": true
+  },
+  "primary_reduction": {
+    "branch_id": "both_stage_clean_fit_profile",
+    "detector1": {
+      "pipeline": "Detector1Pipeline",
+      "clean_flicker_noise": {
+        "skip": false,
+        "fit_method": "median",
+        "background_method": "median_image",
+        "mask_science_regions": false,
+        "n_sigma": 1.5,
+        "apply_flat_field": false,
+        "single_mask_requested": true,
+        "single_mask_effective": false,
+        "save_mask": false,
+        "save_background": false,
+        "save_noise": false,
+        "single_mask_note": "The logged requested value is true. jwst 3.0.0 requires a draft rateints product for median_image and changes the effective value to false."
+      }
+    },
+    "spec2": {
+      "pipeline": "Spec2Pipeline",
+      "background_subtraction": {
+        "expected_status": "SKIPPED",
+        "reason": "standard_bots_level2_association_has_no_background_member"
+      },
+      "clean_flicker_noise": {
+        "skip": false,
+        "fit_method": "median",
+        "background_method": null,
+        "mask_science_regions": false,
+        "n_sigma": 1.5,
+        "single_mask": true,
+        "save_mask": false,
+        "save_background": false,
+        "save_noise": false
+      },
+      "pixel_replace": {
+        "skip": false,
+        "algorithm": "fit_profile",
+        "n_adjacent_cols": 5,
+        "must_precede": "extract_1d"
+      }
+    },
+    "tso3": {
+      "pixel_replace": {
+        "skip": true,
+        "reason": "avoid_double_replacement_after_spec2"
+      }
+    }
+  },
+  "sensitivity_branches": [
+    {
+      "branch_id": "detector1_clean_only_fit_profile",
+      "changes_from_primary": {
+        "spec2.clean_flicker_noise.skip": true
+      },
+      "role": "correlated_engineering_sensitivity"
+    },
+    {
+      "branch_id": "both_stage_clean_mingrad",
+      "changes_from_primary": {
+        "spec2.pixel_replace.algorithm": "mingrad"
+      },
+      "role": "correlated_engineering_sensitivity"
+    },
+    {
+      "branch_id": "both_stage_clean_no_pixel_replace",
+      "changes_from_primary": {
+        "spec2.pixel_replace.skip": true
+      },
+      "role": "correlated_engineering_sensitivity"
+    }
+  ],
+  "combination_contract": {
+    "all_branches_share_photons": true,
+    "independent_reduction_evidence": false,
+    "pooling": "forbidden",
+    "voting": "forbidden",
+    "combined_z_score": "forbidden",
+    "archived_pipeline_2_0_1_crds_1535_comparison": "diagnostic_only_calibration_confounded"
+  },
+  "storage": {
+    "staged_single_primary_ceiling_bytes": 20000000000,
+    "multi_variant_ceiling_bytes": 40000000000,
+    "rule": "Use 20 GB only with verified output hashes followed by staged cleanup. Raise to 40 GB only before retaining multiple full reduction variants or diagnostic cubes."
+  },
+  "current_state": {
+    "execution_status": "PARTIAL",
+    "pipeline_execution_status": "COMPLETE",
+    "protocol_conformance": "NONCONFORMING",
+    "wavelength_dependent_morphology": "NOT_RUN",
+    "science_status": "NOT_RUN",
+    "molecule": "NOT_EVALUATED",
+    "atmosphere": "NOT_EVALUATED",
+    "origin": "NOT_EVALUATED",
+    "biosignature": "NOT_EVALUATED",
+    "evidence_of_life": false,
+    "b3_complete": false,
+    "b3b_complete": false,
+    "real_data_readiness": false
+  },
+  "claim_contract": {
+    "allowed_claim": "This manifest records the detector-level engineering contract for the public GO-2372 o005 NRS2 inputs; execution evidence is separate and wavelength science remains unopened.",
+    "engineering_outputs_do_not_authorize_science": true,
+    "prohibited_claims": [
+      "wavelength-dependent morphology result",
+      "feature detection or absence",
+      "molecule identification",
+      "atmosphere establishment",
+      "planetary or stellar origin",
+      "biosignature",
+      "evidence of life",
+      "independent replication",
+      "repair of the C2/C3 repeatability result",
+      "B3 or B3b completion",
+      "real-data readiness"
+    ]
+  },
+  "execution_record_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "K2-18 o005 detector engineering execution record",
+    "description": "Schema for records under this post-run-reconstructed contract; its presence does not assert that a new execution exists or that any stage has run.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "protocol_manifest_sha256",
+      "overall_status",
+      "execution_status_scope",
+      "pipeline_execution_status",
+      "protocol_conformance",
+      "prospective_protocol_status",
+      "branch_id",
+      "environment",
+      "calibration_references",
+      "segments",
+      "warnings_or_errors",
+      "current_state"
+    ],
+    "properties": {
+      "protocol_manifest_sha256": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "overall_status": {
+        "enum": ["NOT_RUN", "PARTIAL", "COMPLETE", "FAILED"]
+      },
+      "execution_status_scope": {
+        "const": "detector_and_spec2_engineering_only"
+      },
+      "pipeline_execution_status": {
+        "enum": ["NOT_RUN", "PARTIAL", "COMPLETE", "FAILED"]
+      },
+      "protocol_conformance": {
+        "enum": ["NOT_EVALUATED", "CONFORMING", "NONCONFORMING"]
+      },
+      "prospective_protocol_status": {
+        "const": "POST_EXECUTION_RECONSTRUCTION_NOT_PREREGISTERED"
+      },
+      "branch_id": {
+        "enum": [
+          "both_stage_clean_fit_profile",
+          "detector1_clean_only_fit_profile",
+          "both_stage_clean_mingrad",
+          "both_stage_clean_no_pixel_replace"
+        ]
+      },
+      "environment": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["jwst_version", "crds_context", "python_version", "dependency_snapshot_sha256", "config_sha256", "context_pmap_sha256", "nirspec_imap_sha256"],
+        "properties": {
+          "jwst_version": {"const": "3.0.0"},
+          "crds_context": {"const": "jwst_1584.pmap"},
+          "python_version": {"type": "string"},
+          "dependency_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "config_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "context_pmap_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "nirspec_imap_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      },
+      "calibration_references": {
+        "type": "array",
+        "items": {"$ref": "#/$defs/calibration_reference"}
+      },
+      "warnings_or_errors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "scope", "disposition"],
+          "properties": {
+            "code": {"type": "string"},
+            "scope": {"type": "string"},
+            "disposition": {"type": "string"}
+          }
+        }
+      },
+      "segments": {
+        "type": "array",
+        "items": {"$ref": "#/$defs/segment_record"},
+        "maxItems": 3,
+        "uniqueItems": true
+      },
+      "current_state": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["wavelength_dependent_morphology", "science_status", "molecule", "atmosphere", "origin", "biosignature", "evidence_of_life", "b3_complete", "b3b_complete", "real_data_readiness"],
+        "properties": {
+          "wavelength_dependent_morphology": {"const": "NOT_RUN"},
+          "science_status": {"const": "NOT_RUN"},
+          "molecule": {"const": "NOT_EVALUATED"},
+          "atmosphere": {"const": "NOT_EVALUATED"},
+          "origin": {"const": "NOT_EVALUATED"},
+          "biosignature": {"const": "NOT_EVALUATED"},
+          "evidence_of_life": {"const": false},
+          "b3_complete": {"const": false},
+          "b3b_complete": {"const": false},
+          "real_data_readiness": {"const": false}
+        }
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {"overall_status": {"const": "COMPLETE"}},
+          "required": ["overall_status"]
+        },
+        "then": {
+          "properties": {
+            "pipeline_execution_status": {"const": "COMPLETE"},
+            "protocol_conformance": {"const": "CONFORMING"},
+            "branch_id": {"const": "both_stage_clean_fit_profile"},
+            "calibration_references": {"minItems": 1},
+            "segments": {
+              "minItems": 3,
+              "maxItems": 3,
+              "allOf": [
+                {"contains": {"allOf": [{"$ref": "#/$defs/completed_segment"}, {"properties": {"segment_id": {"const": "seg001"}}}]}},
+                {"contains": {"allOf": [{"$ref": "#/$defs/completed_segment"}, {"properties": {"segment_id": {"const": "seg002"}}}]}},
+                {"contains": {"allOf": [{"$ref": "#/$defs/completed_segment"}, {"properties": {"segment_id": {"const": "seg003"}}}]}}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {"overall_status": {"const": "NOT_RUN"}},
+          "required": ["overall_status"]
+        },
+        "then": {
+          "properties": {
+            "pipeline_execution_status": {"const": "NOT_RUN"},
+            "protocol_conformance": {"const": "NOT_EVALUATED"},
+            "calibration_references": {"maxItems": 0},
+            "segments": {"maxItems": 0}
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {"overall_status": {"const": "PARTIAL"}},
+          "required": ["overall_status"]
+        },
+        "then": {
+          "properties": {
+            "pipeline_execution_status": {"enum": ["PARTIAL", "COMPLETE", "FAILED"]},
+            "protocol_conformance": {"enum": ["NOT_EVALUATED", "NONCONFORMING"]}
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {"overall_status": {"const": "FAILED"}},
+          "required": ["overall_status"]
+        },
+        "then": {
+          "properties": {
+            "pipeline_execution_status": {"const": "FAILED"},
+            "protocol_conformance": {"const": "NONCONFORMING"}
+          }
+        }
+      }
+    ],
+    "$defs": {
+      "stage_status": {
+        "enum": ["NOT_RUN", "RUNNING", "COMPLETE", "FAILED"]
+      },
+      "cal_step_status": {
+        "enum": ["NOT_RUN", "COMPLETE", "SKIPPED", "FAILED", "UNKNOWN"]
+      },
+      "hash_record": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "size_bytes", "sha256"],
+        "properties": {
+          "name": {"type": "string"},
+          "size_bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      },
+      "calibration_reference": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["cal_step", "reference_name", "size_bytes", "sha256"],
+        "properties": {
+          "cal_step": {"type": "string"},
+          "reference_name": {"type": "string"},
+          "size_bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      },
+      "stage_record": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["status", "runtime_seconds", "peak_rss_bytes", "outputs"],
+        "properties": {
+          "status": {"$ref": "#/$defs/stage_status"},
+          "runtime_seconds": {"type": ["number", "null"], "minimum": 0},
+          "peak_rss_bytes": {"type": ["integer", "null"], "minimum": 0},
+          "outputs": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/hash_record"}
+          }
+        }
+      },
+      "completed_stage_record": {
+        "allOf": [
+          {"$ref": "#/$defs/stage_record"},
+          {
+            "properties": {
+              "status": {"const": "COMPLETE"},
+              "runtime_seconds": {"type": "number", "minimum": 0},
+              "peak_rss_bytes": {"type": "integer", "minimum": 0},
+              "outputs": {"minItems": 1}
+            }
+          }
+        ]
+      },
+      "segment_record": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["segment_id", "input_verification", "stages", "cal_step_statuses"],
+        "properties": {
+          "segment_id": {"enum": ["seg001", "seg002", "seg003"]},
+          "input_verification": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["status", "observed_size_bytes", "observed_sha256"],
+            "properties": {
+              "status": {"enum": ["NOT_RUN", "VERIFIED", "FAILED"]},
+              "observed_size_bytes": {"type": ["integer", "null"], "minimum": 0},
+              "observed_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+            }
+          },
+          "stages": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["detector1", "spec2", "engineering_qc"],
+            "properties": {
+              "detector1": {"$ref": "#/$defs/stage_record"},
+              "spec2": {"$ref": "#/$defs/stage_record"},
+              "engineering_qc": {"$ref": "#/$defs/stage_record"}
+            }
+          },
+          "cal_step_statuses": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["detector1_clean_flicker_noise", "spec2_background_subtraction", "spec2_clean_flicker_noise", "spec2_pixel_replace", "spec2_extract_1d", "tso3_pixel_replace"],
+            "properties": {
+              "detector1_clean_flicker_noise": {"$ref": "#/$defs/cal_step_status"},
+              "spec2_background_subtraction": {"$ref": "#/$defs/cal_step_status"},
+              "spec2_clean_flicker_noise": {"$ref": "#/$defs/cal_step_status"},
+              "spec2_pixel_replace": {"$ref": "#/$defs/cal_step_status"},
+              "spec2_extract_1d": {"$ref": "#/$defs/cal_step_status"},
+              "tso3_pixel_replace": {"$ref": "#/$defs/cal_step_status"}
+            }
+          }
+        }
+      },
+      "completed_segment": {
+        "allOf": [
+          {"$ref": "#/$defs/segment_record"},
+          {
+            "properties": {
+              "input_verification": {
+                "properties": {
+                  "status": {"const": "VERIFIED"},
+                  "observed_size_bytes": {"type": "integer", "minimum": 0},
+                  "observed_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+                }
+              },
+              "stages": {
+                "properties": {
+                  "detector1": {"$ref": "#/$defs/completed_stage_record"},
+                  "spec2": {"$ref": "#/$defs/completed_stage_record"},
+                  "engineering_qc": {
+                    "allOf": [
+                      {"$ref": "#/$defs/stage_record"},
+                      {
+                        "properties": {
+                          "status": {"const": "COMPLETE"},
+                          "outputs": {"minItems": 1}
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "cal_step_statuses": {
+                "properties": {
+                  "detector1_clean_flicker_noise": {"const": "COMPLETE"},
+                  "spec2_background_subtraction": {"const": "SKIPPED"},
+                  "spec2_clean_flicker_noise": {"const": "COMPLETE"},
+                  "spec2_pixel_replace": {"const": "COMPLETE"},
+                  "spec2_extract_1d": {"const": "COMPLETE"},
+                  "tso3_pixel_replace": {"const": "NOT_RUN"}
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "references": {
+    "jwst_build_contexts": "https://jwst-crds.stsci.edu/display_build_contexts/",
+    "jwst_1584_context": "https://jwst-crds.stsci.edu/browse/jwst_1584.pmap",
+    "official_bots_notebook": "https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.ipynb",
+    "nirspec_bots_known_issues": "https://jwst-docs.stsci.edu/known-issues/nirspec-known-issues/nirspec-bots-known-issues"
+  }
+}

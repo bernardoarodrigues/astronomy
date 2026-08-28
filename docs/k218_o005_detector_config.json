@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "captured_date_utc": "2026-08-28",
+  "recording_phase": "after_engineering_execution_before_wavelength_science_access",
+  "externally_preregistered": false,
+  "provenance": {
+    "invocation_configuration": "post_run_reconstruction_from_six_contemporaneous_resolved_pipeline_logs",
+    "reference_dq_check": "post_run_metadata_check_before_wavelength_science_access"
+  },
+  "saved_invocation_source_available": false,
+  "pipeline_invocation": "PipelineClass.call",
+  "serial_segment_processing": true,
+  "detector1": {
+    "pipeline": "Detector1Pipeline",
+    "save_results": true,
+    "save_calibrated_ramp": false,
+    "clean_flicker_noise": {
+      "skip": false,
+      "autoparam": false,
+      "fit_method": "median",
+      "fit_by_channel": false,
+      "background_method": "median_image",
+      "mask_science_regions": false,
+      "apply_flat_field": false,
+      "n_sigma": 1.5,
+      "single_mask_requested": true,
+      "single_mask_effective": false,
+      "effective_change_reason": "jwst_3_0_0_median_image_requires_draft_rateints",
+      "save_mask": false,
+      "save_background": false,
+      "save_noise": false
+    }
+  },
+  "spec2": {
+    "pipeline": "Spec2Pipeline",
+    "save_results": true,
+    "fail_on_exception": true,
+    "background_subtraction": {
+      "skip": true,
+      "expected_for_standard_bots_without_background_member": true
+    },
+    "clean_flicker_noise": {
+      "skip": false,
+      "autoparam": false,
+      "fit_method": "median",
+      "fit_by_channel": false,
+      "background_method": null,
+      "mask_science_regions": false,
+      "apply_flat_field": false,
+      "n_sigma": 1.5,
+      "single_mask": true,
+      "save_mask": false,
+      "save_background": false,
+      "save_noise": false
+    },
+    "flat_field": {
+      "skip": true
+    },
+    "photom": {
+      "skip": true
+    },
+    "pixel_replace": {
+      "skip": false,
+      "algorithm": "fit_profile",
+      "n_adjacent_cols": 5,
+      "must_precede": "extract_1d"
+    },
+    "extract_1d": {
+      "skip": false,
+      "extraction_type": "box",
+      "apply_apcorr": true,
+      "reference_aperture": "S1600A1",
+      "reference_extract_width_pixels": 7,
+      "source_position_correction_automatically_enabled": true,
+      "saved_calints_precedes_in_memory_pixel_replace": true
+    }
+  },
+  "tso3": {
+    "run": false,
+    "pixel_replace": {
+      "skip": true,
+      "reason": "avoid_double_replacement_after_spec2"
+    }
+  },
+  "scope_boundary": {
+    "wavelength_dependent_flux_accessed": false,
+    "transit_fit_run": false,
+    "morphology_fit_run": false,
+    "science_state": "NOT_RUN"
+  },
+  "warnings_and_post_run_metadata_checks": {
+    "detector1_single_mask_runtime_override": "expected_in_all_three_segments",
+    "linearity_bad_lin_corr_mnemonic_ignored": {
+      "warning_scope": "present_in_all_three_detector1_logs",
+      "reference_name": "jwst_nirspec_linearity_0023.fits",
+      "check_phase": "post_run_before_wavelength_science_access",
+      "check_scope": "reference_DQ_extension_only_no_science_flux",
+      "declared_raw_bit_value": 8,
+      "method": "count_nonzero((DQ.astype(uint64) & uint64(8)) != 0)",
+      "dq_pixels_checked": 532480,
+      "bitwise_set_pixels": 0,
+      "raw_equality_used_as_conclusion": false,
+      "recognized_global_flag_counts": {
+        "NONLINEAR_bit_65536": 1884,
+        "NO_LIN_CORR_bit_1048576": 10740
+      }
+    },
+    "spec2_unknown_pars_targcentroidstep": "nonfatal_in_all_three_segments; targ_centroid_not_used_by_this_bots_path",
+    "extract_1d_photom_not_run": "expected_for_the_selected_relative_time_series_branch"
+  }
+}

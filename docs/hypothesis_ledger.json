@@ -124,6 +124,21 @@
       "allowed_claim": "The frozen retrospective harness found a positive local 4.3-micrometre morphology in C2 but not C3 in either paired reduction view, so the repeatable-positive criterion was not met and the result is SCIENCE_UNRESOLVED; molecular attribution is not evaluated."
     },
     {
+      "hypothesis_id": "H-K218-O005-G395H-MORPH",
+      "target_id": "K2-18-b",
+      "track": "atmosphere",
+      "layer": "observation",
+      "selection_status": "prospective",
+      "exact_claim": "The signed local 4.3-micrometre morphology is positive in the public held-out GO-2372 o005 G395H visit across the frozen corrected extraction and covariance views.",
+      "status": "blocked",
+      "null_hypothesis": "The held-out morphology is nonpositive, extraction-sensitive, covariance-sensitive, or invalid under a required detector-level diagnostic.",
+      "competing_hypotheses": ["positive held-out local morphology", "uncorrected 1/f structure", "flagged-pixel extraction artifact", "background residual", "baseline or limb-darkening sensitivity", "time-correlated noise"],
+      "test": "Reprocess the pinned public o005 NRS2 detector data with frozen flicker-noise cleaning, pixel replacement, extraction variants, transit and systematics models, joint block-bootstrap depth covariance, null and injection calibration, and the unchanged local morphology contrast.",
+      "success_gate": "Pre-unblinding null, coverage, and bias gates pass; the nominal contrast has A greater than zero and retrospective z at least 2; every required corrected extraction, baseline, covariance, limb-darkening, and deletion view remains valid with A greater than zero.",
+      "stop_rule": "Do not open wavelength-dependent morphology until detector-level extraction and injection gates are implemented. The archived Stage-3 product alone cannot yield a claim-bearing result, cannot repair H-K218-G395H-MORPH, and cannot update a molecular, biosignature, life, B3/B3b, or readiness state.",
+      "allowed_claim": "A public held-out GO-2372 G395H visit exists, but its archived Stage-3 extraction failed the metadata-only readiness gate and no wavelength-dependent morphology fit was run."
+    },
+    {
       "hypothesis_id": "H-K218-CH4",
       "target_id": "K2-18-b",
       "track": "atmosphere",

@@ -116,6 +116,14 @@ sink tests before the phrase “potential biosignature” could be considered.
   `SCIENCE_UNRESOLVED / criterion_not_met`. This retrospective
   published-spectrum check is non-attribution and does not update H-K218-CO2,
   B3b, or real-data readiness.
+- [x] **Held-out o005 discovery and metadata preflight:** GO-2372 observation
+  o005 from May 2025 is public and its exact Stage-3 products are pinned. The
+  archived extraction skipped 1/f cleaning, pixel replacement, and background
+  subtraction, so the claim-bearing fit was blocked before wavelength values
+  were opened. Preserve it as a separate prospective detector-level test.
+- [ ] Reprocess o005 NRS2 from `uncal` with frozen 1/f cleaning, pixel
+  replacement, extraction-width variants, joint time/wavelength covariance,
+  and null/injection gates before fitting the held-out morphology.
 - [ ] Only then run the frozen K2-18 b CH4 and CO2 replication.
 - [ ] Treat the K2-18 b DMS/DMDS exercise as an adversarial model-comparison test,
    not a search optimized to recover sulfur.

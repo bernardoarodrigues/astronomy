@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "docs" / "hypothesis_ledger.json"
+O005_MANIFEST_PATH = ROOT / "docs" / "k218_o005_manifest.json"
 
 
 class HypothesisLedgerTests(unittest.TestCase):
@@ -96,6 +97,35 @@ class HypothesisLedgerTests(unittest.TestCase):
         self.assertIn("molecular attribution is not evaluated", hypothesis["allowed_claim"])
         self.assertIn("cannot update H-K218-CO2", hypothesis["stop_rule"])
         self.assertIn("B3/B3b", hypothesis["stop_rule"])
+
+    def test_k218_o005_is_prospective_and_blocked_before_fit(self):
+        hypothesis = next(
+            item
+            for item in self.ledger["hypotheses"]
+            if item["hypothesis_id"] == "H-K218-O005-G395H-MORPH"
+        )
+        self.assertEqual(hypothesis["layer"], "observation")
+        self.assertEqual(hypothesis["selection_status"], "prospective")
+        self.assertEqual(hypothesis["status"], "blocked")
+        self.assertIn("no wavelength-dependent morphology fit was run", hypothesis["allowed_claim"])
+        self.assertIn("Stage-3 product alone cannot yield", hypothesis["stop_rule"])
+
+    def test_k218_o005_manifest_is_pinned_and_fail_closed(self):
+        manifest = json.loads(O005_MANIFEST_PATH.read_text(encoding="utf-8"))
+        products = {item["role"]: item for item in manifest["products"]}
+        self.assertEqual(
+            products["stage3_integration_spectra"]["sha256"],
+            "79d5957df2bc0a4c3c15e576bff2926c2316868131bd3ae9d6a3df3f94f2648b",
+        )
+        self.assertEqual(manifest["stage3_header_preflight"]["clean_flicker_noise"], "SKIPPED")
+        self.assertEqual(manifest["stage3_header_preflight"]["pixel_replace"], "SKIPPED")
+        self.assertFalse(
+            manifest["stage3_header_preflight"]["wavelength_dependent_science_values_inspected"]
+        )
+        self.assertEqual(manifest["preflight_outcome"]["science_state"], "NOT_RUN")
+        self.assertEqual(manifest["preflight_outcome"]["readiness"], "BLOCKED")
+        self.assertFalse(manifest["preflight_outcome"]["evidence_of_life"])
+        self.assertFalse(manifest["storage"]["raise_ceiling_to_40gb"])
 
 
 if __name__ == "__main__":

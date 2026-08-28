@@ -46,6 +46,11 @@ claims, nulls, confounders, gates, and stopping rules.
   not C3 under either paired Eureka/exoTEDRF view, so the frozen repeatability
   criterion was not met. It neither attributes a molecule nor changes
   B3b/readiness or the existing K2-18 molecular hypotheses.
+- **K2-18 b held-out o005 — public, blocked before fit:** a later May 2025
+  G395H visit is public, pinned, and under 1 GB at Stage 3, but the archived
+  extraction skipped flicker-noise cleaning, pixel replacement, and background
+  subtraction. No wavelength-dependent fit was run; a detector-level corrected
+  reduction and injection gate are required.
 - **K2-18 b — retrospective replication only:** methane is the strongest
   published atmospheric result; CO2 is less independently mature; DMS/DMDS,
   an ocean, a technosignature, and life are not established.
@@ -144,6 +149,11 @@ inverse-variance rebinning with full covariance propagation, a signed local
 one-bin deletions. `z` is a retrospective standardized contrast, not discovery
 significance. See [`docs/K218_REPEATABILITY.md`](docs/K218_REPEATABILITY.md)
 for the frozen contract, `SCIENCE_UNRESOLVED` result, and claim boundary.
+
+The later public GO-2372 o005 visit is recorded separately in
+[`docs/K218_O005_HELDOUT_PLAN.md`](docs/K218_O005_HELDOUT_PLAN.md). Its
+metadata-only preflight is `NOT_RUN / BLOCKED`; it is a future held-out test,
+not an extension or reinterpretation of the executed C2/C3 result.
 
 ## Phase 1 — Voyager benchmark
 

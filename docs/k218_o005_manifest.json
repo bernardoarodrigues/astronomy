@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "snapshot_date_utc": "2026-08-28",
+  "benchmark_id": "k218-go2372-o005-heldout-preflight-v1",
+  "observation": {
+    "obsid": 266469228,
+    "obs_id": "jw02372-o005_t001_nirspec_f290lp-g395h-s1600a1-sub2048",
+    "program_id": "GO-2372",
+    "observation_number": "005",
+    "target": "K2-18",
+    "instrument": "NIRSpec",
+    "mode": "BOTS G395H/F290LP S1600A1 SUB2048",
+    "date_begin_utc": "2025-05-26T04:49:25.145",
+    "date_end_utc": "2025-05-26T13:44:00.654",
+    "data_rights": "PUBLIC",
+    "public_release_utc": "2026-05-26T21:33:03.994",
+    "evidence_units": 1
+  },
+  "products": [
+    {
+      "role": "stage3_integration_spectra",
+      "uri": "mast:JWST/product/jw02372-o005_t001_nirspec_f290lp-g395h-s1600a1-sub2048_x1dints.fits",
+      "size_bytes": 971706240,
+      "sha256": "79d5957df2bc0a4c3c15e576bff2926c2316868131bd3ae9d6a3df3f94f2648b",
+      "sha256_source": "locally_streamed_full_file",
+      "git_policy": "excluded_source_payload"
+    },
+    {
+      "role": "stage3_white_light_sum",
+      "uri": "mast:JWST/product/jw02372-o005_t001_nirspec_f290lp-g395h-s1600a1-sub2048_whtlt.ecsv",
+      "size_bytes": 231355,
+      "sha256": "e2105bfec8cd34f6ef32af2d9bd52fdccff5f545606aa48333803d3dce82cc1b",
+      "sha256_source": "locally_streamed_full_file",
+      "git_policy": "excluded_source_payload"
+    },
+    {
+      "role": "stage3_association",
+      "uri": "mast:JWST/product/jw02372-o005_20260712t150353_tso3_00001_asn.json",
+      "size_bytes": 4901,
+      "sha256": "e44f6cf606a84e837ec93d12ab42785c4fe105ae6ed2cbea26ba5fad34081d70",
+      "sha256_source": "locally_streamed_full_file",
+      "git_policy": "manifest_only"
+    },
+    {
+      "role": "stage3_pool",
+      "uri": "mast:JWST/product/jw02372_20260712t150353_pool.csv",
+      "size_bytes": 24190,
+      "sha256": "26bb432d64c3724983047fe8cb992ef01d77316d71f5ccaa5eba75410a0e0e15",
+      "sha256_source": "locally_streamed_full_file",
+      "git_policy": "manifest_only"
+    }
+  ],
+  "stage3_header_preflight": {
+    "cal_ver": "2.0.1",
+    "crds_context": "jwst_1535.pmap",
+    "calibration_date_utc": "2026-07-12T18:54:30.779",
+    "number_of_integrations": 2089,
+    "effective_integration_seconds": 14.432,
+    "segment_integration_counts": [697, 696, 696],
+    "nrs2_extract1d_extension_versions": [2, 4, 6],
+    "clean_flicker_noise": "SKIPPED",
+    "pixel_replace": "SKIPPED",
+    "background_subtraction": "SKIPPED",
+    "wavelength_dependent_science_values_inspected": false
+  },
+  "preflight_outcome": {
+    "execution_status": "COMPLETE",
+    "science_state": "NOT_RUN",
+    "readiness": "BLOCKED",
+    "reason": "archived_stage3_extraction_skipped_corrections_directly_relevant_to_nrs2_morphology",
+    "authorizes_stage3_claim_bearing_fit": false,
+    "authorizes_molecule_attribution": false,
+    "evidence_of_life": false
+  },
+  "storage": {
+    "existing_project_ceiling_bytes": 20000000000,
+    "stage3_minimum_products_bytes": 971966686,
+    "public_nrs2_science_intermediates_bytes": 14294468160,
+    "stage3_x1dints_and_white_light_bytes": 971937595,
+    "raise_ceiling_to_40gb": false,
+    "note": "Twenty GB is sufficient with staged cleanup; forty GB is justified only if retaining multiple full detector-level reductions and calibration caches."
+  },
+  "claim_contract": {
+    "allowed_claim": "A public held-out GO-2372 G395H visit exists, but its archived Stage-3 extraction failed the prospective metadata-only readiness gate and no wavelength-dependent morphology fit was run.",
+    "prohibited_claims": [
+      "held-out feature detection",
+      "molecule identification",
+      "atmospheric or planetary origin",
+      "biosignature",
+      "evidence of life",
+      "repair of the contradicted C2/C3 repeatability hypothesis"
+    ]
+  },
+  "references": {
+    "mast_download_api": "https://mast.stsci.edu/api/v0/MastApiTutorial.html",
+    "jwst_tso_stage3": "https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_tso3.html",
+    "jwst_white_light": "https://jwst-pipeline.readthedocs.io/en/latest/jwst/white_light/description.html",
+    "nirspec_bots_known_issues": "https://jwst-docs.stsci.edu/known-issues/nirspec-known-issues/nirspec-bots-known-issues"
+  }
+}

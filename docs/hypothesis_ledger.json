@@ -7,14 +7,16 @@
     "supported",
     "contradicted",
     "unresolved",
-    "blocked"
+    "blocked",
+    "not_applicable"
   ],
   "selection_vocabulary": [
     "positive_control",
     "negative_control",
     "validation_suite",
     "retrospective_replication",
-    "prospective"
+    "prospective",
+    "historical_context"
   ],
   "required_evidence_fields": [
     "observation_program_visit_ids",
@@ -107,6 +109,21 @@
       "success_gate": "Every preregistered global calibration, power, coverage, abstention, provenance, secrecy, and independence gate passes at the full release sample sizes.",
       "stop_rule": "Any leakage, missing cell, scorer dependence, generator inverse crime, or failed gate keeps real_data_readiness not_established and blocks claim-bearing K2-18 b analysis.",
       "allowed_claim": "B3b has not been executed; global molecular-attribution calibration and real-data readiness remain unestablished."
+    },
+    {
+      "hypothesis_id": "H-K218-C1-CONTEXT",
+      "target_id": "K2-18-b",
+      "track": "atmosphere",
+      "layer": "observation",
+      "selection_status": "historical_context",
+      "exact_claim": "Descriptively report whether the unchanged signed local 4.3-micrometre contrast criterion is met in both correlated published views of the historical GO-2722 C1 visit.",
+      "status": "not_applicable",
+      "null_hypothesis": "Not applicable to historical context; criterion_not_met means only that at least one frozen descriptive gate was not met.",
+      "competing_hypotheses": ["positive but subthreshold local contrast", "pipeline-sensitive local contrast", "starspot-treatment ambiguity", "covariance-sensitive local contrast", "no qualifying local contrast"],
+      "test": "Apply the already-committed GO-2372 R=100 grid, overlap-aware rebinning, signed GLS contrast, AR(1) sensitivities, and one-bin deletions unchanged to the two published correlated C1 NRS2 views.",
+      "success_gate": "Both nominal correlated views are valid with A greater than zero and retrospective standardized contrast z at least 2; every rho=0.25 and rho=0.5 fit and every required one-bin deletion is valid with A greater than zero.",
+      "stop_rule": "Every other successful execution is criterion_not_met under science_state not_applicable_historical_context. Never pool or vote C1 with C2/C3 or infer a GO-2372 comparison, molecule, origin, atmosphere, biosignature, life, B3/B3b completion, or real-data readiness.",
+      "allowed_claim": "Both correlated historical C1 views had positive local amplitudes but retrospective standardized contrasts near 1.1, so the frozen context criterion was not met; science_state remains not_applicable_historical_context and molecular attribution is not evaluated."
     },
     {
       "hypothesis_id": "H-K218-G395H-MORPH",

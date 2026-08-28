@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "k218-go2722-c1-historical-context-v1",
+  "description": "Retrospective historical-context diagnostic of the pinned published K2-18 b GO-2722 C1 spectrum; no comparison, molecular attribution, or life inference is evaluated.",
+  "archive": {
+    "record": "OSF HPU8G public file j6p7r",
+    "doi": "https://doi.org/10.17605/OSF.IO/HPU8G",
+    "url": "https://osf.io/download/j6p7r/",
+    "filename": "spectra-k2-18b.zip",
+    "size_bytes": 275602,
+    "sha256": "4ee5cb6ad42015bd8fb10f64e54329d250137ab1fa129c89a14830946adc8f18",
+    "license_spdx": "NOASSERTION",
+    "default_max_download_bytes": 1000000,
+    "hard_max_download_bytes": 20000000000,
+    "max_archive_members": 1000,
+    "max_total_uncompressed_bytes": 20000000
+  },
+  "program": {
+    "program_id": "GO-2722",
+    "instrument_mode": "JWST/NIRSpec G395H transmission",
+    "complete_g395h_visit_inventory": {
+      "visit_1": {
+        "paper_label": "C1",
+        "program_id": "GO-2722",
+        "observation_date_utc": "2023-01-20",
+        "eligible": true,
+        "independence_group": "GO-2722-C1-photons"
+      }
+    },
+    "selection_rule": "Use the historical C1 G395H visit only, with both archived Eureka and exoTEDRF NRS2 views, solely as a standalone context diagnostic.",
+    "selection_basis": "historical_context_member_identity",
+    "spectral_result_selection": false,
+    "eligible_visits": ["visit_1"],
+    "evidence_units": 1,
+    "paired_correlated_views_per_evidence_unit": 2,
+    "reductions_are_independent": false,
+    "cross_reduction_combination": "prohibited",
+    "comparison_to_go2372": "descriptive_only_not_inferential",
+    "note": "Eureka and exoTEDRF are correlated views of the same C1 photons. C1 is not pooled or voted with C2/C3."
+  },
+  "members": [
+    {
+      "role": "exotedrf_visit_1_nrs2",
+      "reduction": "exoTEDRF",
+      "visit": "visit_1",
+      "detector": "NRS2",
+      "path": "spectra/nirspec_exotedrf_by_visit/K2_18_b_NIRSPEC_G395H_NRS2_0004um_Spectrum_Visit1.spec",
+      "size_bytes": 46925,
+      "sha256": "bd5ffeacfd2962f44175872e90b1f335e87e5212f1c194ccc4cf3be2469e663a",
+      "rows": 335,
+      "wavelength_min_micrometres": 3.832,
+      "wavelength_max_micrometres": 5.168
+    },
+    {
+      "role": "eureka_visit_1_nrs2",
+      "reduction": "Eureka",
+      "visit": "visit_1",
+      "detector": "NRS2",
+      "path": "spectra/nirspec_eureka_by_visit/S6_k2_18b_g395_nrs2_ap3_bg9_rp^2_Table_Save_g395_nrs2_c1.txt",
+      "size_bytes": 33017,
+      "sha256": "e2f2ee2489f81203e8292194c6e5fc949740fe407a98c34348a48b87bab7392b",
+      "rows": 335,
+      "wavelength_min_micrometres": 3.832,
+      "wavelength_max_micrometres": 5.168
+    }
+  ],
+  "schemas": {
+    "exoTEDRF": {
+      "format": "ECSV comma-separated",
+      "depth_unit": "ppm",
+      "uncertainty_rule": "max(yerrLow,yerrUpp), with both reported errors required positive"
+    },
+    "Eureka": {
+      "format": "ECSV whitespace-separated",
+      "depth_unit": "fractional_transit_depth",
+      "uncertainty_rule": "1000000*max(rp^2_errorneg,rp^2_errorpos), with both reported errors required positive"
+    }
+  },
+  "rebinning": {
+    "resolving_power": 100.0,
+    "grid_anchor_micrometres": 1.0,
+    "grid_definition": "e_k = 1 micrometre * exp(k/100) for integer k",
+    "first_edge_index": 135,
+    "last_edge_index": 155,
+    "edge_count": 21,
+    "output_bin_count": 20,
+    "edge_sha256": "7f7e418fc0bfde1478d7ade8a4fef0f774bc7bb0f3046a918be7bc763d3b2d28",
+    "edge_hash_encoding": "newline-joined Python float64 format(.17g), no trailing newline",
+    "assignment": "Reuse the committed GO-2372 method: W_ji is proportional to overlap_length(native_i,output_j)/sigma_i^2 and normalized per output row; y_out=W*y_native and C_out=W*C_native*W^T.",
+    "coverage_relative_tolerance": 1e-12,
+    "minimum_coverage_fraction": 0.999999999999,
+    "edge_policy": "Use only the unchanged global cells wholly inside 3.85-4.75 micrometres; reject partial native coverage."
+  },
+  "analysis": {
+    "label": "historical C1 4.3-micrometre local contrast context",
+    "detector": "NRS2",
+    "domain_micrometres": [3.85, 4.75],
+    "feature_micrometres": [4.05, 4.55],
+    "model": "y = alpha + beta*(lambda-4.30) + A*f, where f is the output-bin wavelength-overlap fraction with [4.05,4.55] micrometres",
+    "pivot_micrometres": 4.3,
+    "primary_covariance": "C_native=diag(max(error_low,error_high)^2), propagated with the unchanged W and fit by full GLS",
+    "ar1_rho_sensitivities": [0.25, 0.5],
+    "z_label": "retrospective_standardized_contrast",
+    "leave_one_output_bin_out": "refit the unchanged full intercept+slope+feature model after each one-bin deletion",
+    "context_rules": {
+      "positive_local_contrast_in_both_correlated_views": "both nominal views are valid with A>0 and z>=2, every rho=0.25/0.5 sensitivity is valid with A>0, and every required one-bin-deletion fit is valid with A>0",
+      "criterion_not_met": "every other successfully executed result"
+    },
+    "context_rule_priority": [
+      "positive_local_contrast_in_both_correlated_views",
+      "criterion_not_met"
+    ]
+  },
+  "output_contract": {
+    "retrospective": true,
+    "externally_preregistered": false,
+    "science_state": "not_applicable_historical_context",
+    "independent_reduction": false,
+    "independent_reduction_evidence": false,
+    "comparison_to_go2372": "descriptive_only_not_inferential",
+    "planetary_origin": "not_evaluated",
+    "atmosphere": "not_evaluated",
+    "molecule": "not_evaluated",
+    "molecule_attribution": "not_evaluated",
+    "biosignature": "not_evaluated",
+    "biosignature_state": "not_evaluated",
+    "evidence_of_life": false,
+    "b3_completion": false,
+    "b3b_completion": false,
+    "real_data_readiness": false
+  },
+  "transparency": {
+    "blind_or_pre_unblinded": false,
+    "reason": "The numerical method was already committed for C2/C3 and is reused unchanged, but the first few C1 table rows had been displayed while checking headers before this C1 implementation.",
+    "post_publication": true,
+    "held_out": false,
+    "limitations": [
+      "substantially shorter out-of-transit time baseline in C1",
+      "published spot-treatment disagreement: Hu et al. masked a C1 spot-crossing event in Eureka, while Schmidt et al. report no spot crossing in the NIRSpec light curves and treat the event as NIRISS-specific; these spectra cannot adjudicate the disagreement",
+      "the two reduction views share photons",
+      "post-publication and not held out",
+      "published covariance is unavailable; diagonal and assumed native AR(1) covariances are diagnostics, not measured covariance"
+    ],
+    "post_run_editorial_clarification": "After the first execution, two limitation labels were made more precise and the Schmidt et al. provenance citation was added. No input, numerical method, threshold, descriptor rule, or result value changed."
+  },
+  "allowed_claim": "The historical C1 context harness reports whether the unchanged signed local 4.3-micrometre contrast criterion is met in both correlated published views; this is descriptive context only.",
+  "prohibited_claims": [
+    "blind or pre-unblinded analysis",
+    "independent evidence from Eureka and exoTEDRF",
+    "pooling or voting C1 with C2/C3",
+    "inferential comparison with GO-2372",
+    "molecular detection or attribution",
+    "planetary or atmospheric origin",
+    "biosignature, habitability, or evidence of life",
+    "B3 or B3b completion",
+    "real-data readiness"
+  ],
+  "citations": {
+    "osf_record": "https://doi.org/10.17605/OSF.IO/HPU8G",
+    "paper": "https://arxiv.org/abs/2507.12622",
+    "independent_reanalysis": "https://doi.org/10.3847/1538-3881/ae019a",
+    "historical_program": "https://www.stsci.edu/jwst/science-execution/program-information?id=2722"
+  }
+}

@@ -98,6 +98,20 @@ class HypothesisLedgerTests(unittest.TestCase):
         self.assertIn("cannot update H-K218-CO2", hypothesis["stop_rule"])
         self.assertIn("B3/B3b", hypothesis["stop_rule"])
 
+    def test_k218_c1_context_is_isolated_and_non_attribution(self):
+        hypothesis = next(
+            item
+            for item in self.ledger["hypotheses"]
+            if item["hypothesis_id"] == "H-K218-C1-CONTEXT"
+        )
+        self.assertEqual(hypothesis["layer"], "observation")
+        self.assertEqual(hypothesis["selection_status"], "historical_context")
+        self.assertEqual(hypothesis["status"], "not_applicable")
+        self.assertIn("criterion was not met", hypothesis["allowed_claim"])
+        self.assertIn("molecular attribution is not evaluated", hypothesis["allowed_claim"])
+        self.assertIn("Never pool or vote C1 with C2/C3", hypothesis["stop_rule"])
+        self.assertIn("not_applicable_historical_context", hypothesis["stop_rule"])
+
     def test_k218_o005_is_prospective_and_blocked_before_fit(self):
         hypothesis = next(
             item

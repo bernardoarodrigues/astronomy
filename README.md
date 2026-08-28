@@ -46,6 +46,10 @@ claims, nulls, confounders, gates, and stopping rules.
   not C3 under either paired Eureka/exoTEDRF view, so the frozen repeatability
   criterion was not met. It neither attributes a molecule nor changes
   B3b/readiness or the existing K2-18 molecular hypotheses.
+- **K2-18 b historical C1 context — executed, criterion not met:** the
+  unchanged local-contrast method found positive amplitudes in both correlated
+  GO-2722 C1 views, but both retrospective standardized contrasts were about
+  1.1 and below the frozen threshold. This is descriptive context only.
 - **K2-18 b held-out o005 — public, blocked before fit:** a later May 2025
   G395H visit is public, pinned, and under 1 GB at Stage 3, but the archived
   extraction skipped flicker-noise cleaning, pixel replacement, and background
@@ -154,6 +158,12 @@ The later public GO-2372 o005 visit is recorded separately in
 [`docs/K218_O005_HELDOUT_PLAN.md`](docs/K218_O005_HELDOUT_PLAN.md). Its
 metadata-only preflight is `NOT_RUN / BLOCKED`; it is a future held-out test,
 not an extension or reinterpretation of the executed C2/C3 result.
+
+Historical GO-2722 C1 is handled by a separate `k218_c1_context` package and
+`k218-c1-context` CLI. It reuses the committed numerical method but never pools
+or votes C1 with C2/C3. Its output is explicitly post-publication, not blind,
+not held out, and descriptive only. See
+[`docs/K218_C1_CONTEXT.md`](docs/K218_C1_CONTEXT.md).
 
 ## Phase 1 — Voyager benchmark
 

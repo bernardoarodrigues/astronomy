@@ -15,6 +15,9 @@ needs new observations. The corresponding machine-readable
 [`docs/hypothesis_ledger.json`](docs/hypothesis_ledger.json) freezes the initial
 claims, nulls, confounders, gates, and stopping rules.
 
+The consolidated outcome of the 2026-08-28 agent-led goal run is recorded in
+[`docs/GOAL_REPORT_2026-08-28.md`](docs/GOAL_REPORT_2026-08-28.md).
+
 ## Current state
 
 - **Radio positive control — complete:** all three documented Voyager features
@@ -50,11 +53,13 @@ claims, nulls, confounders, gates, and stopping rules.
   unchanged local-contrast method found positive amplitudes in both correlated
   GO-2722 C1 views, but both retrospective standardized contrasts were about
   1.1 and below the frozen threshold. This is descriptive context only.
-- **K2-18 b held-out o005 — public, blocked before fit:** a later May 2025
-  G395H visit is public, pinned, and under 1 GB at Stage 3, but the archived
-  extraction skipped flicker-noise cleaning, pixel replacement, and background
-  subtraction. No wavelength-dependent fit was run; a detector-level corrected
-  reduction and injection gate are required.
+- **K2-18 b held-out o005 — detector path completed, science unopened:** all
+  three public NRS2 `uncal` segments completed a JWST 3.0.0/CRDS 1584 path with
+  both-stage flicker cleaning and Spec2 pixel replacement. The post-run
+  reconstructed configuration is nonconforming with the prospective contract,
+  detector/time-series QC and injection gates remain unrun, and no
+  wavelength-dependent fit was opened. Pipeline execution is complete; overall
+  engineering status is partial and science remains `NOT_RUN`.
 - **K2-18 b — retrospective replication only:** methane is the strongest
   published atmospheric result; CO2 is less independently mature; DMS/DMDS,
   an ocean, a technosignature, and life are not established.
@@ -156,8 +161,11 @@ for the frozen contract, `SCIENCE_UNRESOLVED` result, and claim boundary.
 
 The later public GO-2372 o005 visit is recorded separately in
 [`docs/K218_O005_HELDOUT_PLAN.md`](docs/K218_O005_HELDOUT_PLAN.md). Its
-metadata-only preflight is `NOT_RUN / BLOCKED`; it is a future held-out test,
-not an extension or reinterpretation of the executed C2/C3 result.
+archived-product preflight was `NOT_RUN / BLOCKED`, and its subsequent
+detector-path execution is documented in
+[`docs/K218_O005_DETECTOR_EXECUTION.md`](docs/K218_O005_DETECTOR_EXECUTION.md).
+The held-out science test remains unopened; it is not an extension or
+reinterpretation of the executed C2/C3 result.
 
 Historical GO-2722 C1 is handled by a separate `k218_c1_context` package and
 `k218-c1-context` CLI. It reuses the committed numerical method but never pools

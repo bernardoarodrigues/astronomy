@@ -66,6 +66,24 @@ class HypothesisLedgerTests(unittest.TestCase):
         )
         self.assertNotIn("detection", hypothesis["allowed_claim"].lower())
 
+    def test_b3a_remains_incomplete_and_does_not_authorize_k2_18(self):
+        hypothesis = next(
+            item
+            for item in self.ledger["hypotheses"]
+            if item["hypothesis_id"] == "H-SYNTH-ATM-B3A"
+        )
+        self.assertEqual(hypothesis["status"], "contradicted")
+        self.assertIn("remains incomplete", hypothesis["allowed_claim"].lower())
+        self.assertIn("do not tune", hypothesis["stop_rule"].lower())
+        self.assertIn("authorize k2-18 b", hypothesis["stop_rule"].lower())
+        b3b = next(
+            item
+            for item in self.ledger["hypotheses"]
+            if item["hypothesis_id"] == "H-SYNTH-ATM-B3B"
+        )
+        self.assertEqual(b3b["status"], "untested")
+        self.assertIn("remain unestablished", b3b["allowed_claim"].lower())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,198 @@
+{
+  "allowed_claim": "The public B3a synthetic engineering preflight executed the frozen linear-Gaussian challenge and met its predeclared smoke gates in the locked environment. This is not the sealed B3 scientific gate and is not evidence about any real atmosphere.",
+  "benchmark_id": "synthetic_atmosphere_engineering_preflight_v1",
+  "citations": {
+    "gj486_source_paper": "https://doi.org/10.3847/2041-8213/accb9c",
+    "numpy_pcg64dxsm": "https://numpy.org/doc/stable/reference/random/bit_generators/pcg64dxsm.html",
+    "numpy_parallel_rng": "https://numpy.org/doc/stable/reference/random/parallel.html",
+    "source_record": "https://doi.org/10.5281/zenodo.10408056"
+  },
+  "contract_sha256": "b4b5a59dbecfa24ab1330afa483983e5ce4b1fae9a4dab83cd275d1cfe9d52a8",
+  "decision_rule": {
+    "lack_of_fit_standard_deviations": 4.0,
+    "negative_coefficients_remain_signed": true,
+    "promotion_z": 3.0,
+    "states": [
+      "none",
+      "planetary_supported",
+      "stellar_supported",
+      "joint_supported",
+      "conflicting_single_template_support",
+      "model_inadequate"
+    ]
+  },
+  "description": "Public synthetic engineering preflight on the pinned GJ 486 b Eureka grid; no observed transit depths are used",
+  "derived_fingerprints": {
+    "planet_template_sha256": "ba177a1dab6f91d9d4edfa34fea4836aa46a9c98d8f430a3b832ed093bd222a0",
+    "stellar_template_sha256": "02590efea04034a39efeff943cc15b84597f4345d01256b0ffb17f2510486472",
+    "template_weighted_correlation": -0.45253880950231695,
+    "uncertainty_sha256": "c8c1e75d34e881d76ab5f99a4fde5bae8a59b4486df7344106548d65c75c0e4c",
+    "wavelength_sha256": "9754a9419fb02442b571f85663bf8fbbd2ce6917f41087e1aa9e4eaf2e593bc4",
+    "width_sha256": "0a59eaa405e710c57837c282099991bd041a39f04d3a85c826a429eb112d3b1d"
+  },
+  "future_sealed_b3b": {
+    "coverage_cases_per_key_cell": 2000,
+    "negative_cases_per_family": 2000,
+    "power_cases_per_cell": 1000,
+    "requirements": "Independent truth custodian and scorer, secret entropy, preregistered evaluator digest, complete adversarial inventory, exact binomial gates, and no post-reveal tuning",
+    "status": "pending_not_executed"
+  },
+  "grid": {
+    "detector_gap_preserved": true,
+    "detector_split_micrometres": 3.8,
+    "expected_rows": 109,
+    "reduction": "Eureka",
+    "selection": "wavelength >= 2.87 micrometres",
+    "uses_observed_transit_depths": false
+  },
+  "incomplete_claim": "The B3a public synthetic preflight executed all 648 cases but remains incomplete because unsafe-specific-classification and diagnostic-classification gates were not met.",
+  "model": {
+    "covariance": {
+      "diagonal": "Sigma_ij = sigma_i^2 delta_ij",
+      "within_detector_ar1": "Sigma_ij = sigma_i sigma_j rho^|i-j| within a detector and 0 across the gap"
+    },
+    "design": "intercept + wavelength_trend + NRS2_step + signed_planet*planet_template + signed_stellar*stellar_template",
+    "inference": "exact generalized least squares with exact Gaussian coefficient intervals",
+    "naive_diagnostic": "Every case is also evaluated with diagonal covariance; this result is diagnostic and cannot promote the preflight."
+  },
+  "preflight_gates": {
+    "coefficient_bias_abs_max": 0.2,
+    "coverage": {
+      "50": [
+        0.46,
+        0.54
+      ],
+      "80": [
+        0.77,
+        0.83
+      ],
+      "95": [
+        0.93,
+        0.97
+      ]
+    },
+    "ambiguous_cancellation_classification_min": 0.7,
+    "joint_power_min": 0.7,
+    "maximum_family_unsafe_specific_classification_max": 0.02,
+    "omitted_model_inadequacy_detection_min": 0.75,
+    "pooled_unsafe_specific_classification_max": 0.02,
+    "pull_mean_abs_max": 0.1,
+    "pull_std": [
+      0.9,
+      1.1
+    ],
+    "stellar_power_min": 0.8,
+    "strong_planet_power_min": 0.8,
+    "weak_planet_abstention_min": 0.7,
+    "weak_planet_promotion_max": 0.2
+  },
+  "prohibited_claims": [
+    "B3 complete",
+    "K2-18 b authorized",
+    "validated atmospheric retrieval",
+    "ready to detect K2-18 b",
+    "real atmosphere detected",
+    "molecule detected",
+    "biosignature",
+    "habitability",
+    "life",
+    "real-data false-positive rate",
+    "robust to unknown systematics"
+  ],
+  "public_preflight": {
+    "cases_per_family": 72,
+    "covariance_schedule": "null is diagonal; correlated_null alternates rho 0.25/0.5; other families cycle diagonal/rho 0.25/rho 0.5",
+    "families": [
+      "null",
+      "correlated_null",
+      "strong_planet",
+      "weak_planet",
+      "stellar_only",
+      "detector_only",
+      "planet_stellar",
+      "omitted_template",
+      "ambiguous_cancellation"
+    ],
+    "precision_limit": "Smoke/preflight sample sizes do not support the release precision required of sealed B3b.",
+    "total_cases": 648,
+    "truth_parameters": {
+      "detector_only_step_ppm": 60.0,
+      "ambiguous_cancellation_planet_stellar": [
+        3.0,
+        -3.0
+      ],
+      "omitted_template_amplitude": 10.0,
+      "planet_stellar_coefficients": [
+        6.0,
+        6.0
+      ],
+      "stellar_only_coefficient": 6.0,
+      "strong_planet_coefficient": 6.0,
+      "weak_planet_coefficient": 1.5
+    }
+  },
+  "rng": {
+    "bit_generator": "PCG64DXSM",
+    "case_id_domain": "b3a-public-id-v1",
+    "family_seed_aliases": {
+      "ambiguous_cancellation": "nonidentifiable"
+    },
+    "root_entropy_uint32": [
+      310334029,
+      1197281221,
+      2779096485,
+      3235823838
+    ],
+    "spawn_key_schema": "first four little-endian uint32 words of SHA256('synthetic-atmosphere-b3a-v1|stream|seed_family|replicate'), where seed_family applies family_seed_aliases",
+    "streams": [
+      "nuisance",
+      "noise"
+    ]
+  },
+  "schema_version": 1,
+  "scope": {
+    "authorizes_k2_18": false,
+    "full_b3_gate": false,
+    "milestone": "B3a",
+    "type": "synthetic_atmospheric_engineering_preflight"
+  },
+  "source": {
+    "archive_filename": "GJ486b_Zenodo_2023.zip",
+    "archive_sha256": "b259b5e191a35c53280b58e44167760caf10881274b7ddcfa55f5d926a4ef444",
+    "default_extracted_root": "data/gj486/nirspec/extracted",
+    "doi": "10.5281/zenodo.10408056",
+    "license_spdx": "CC-BY-4.0",
+    "members": [
+      {
+        "path": "GJ486b_Zenodo_2023/TransmissionSpectra/GJ486b_TransmissionSpectra.txt",
+        "role": "eureka_grid_uncertainties",
+        "sha256": "8f39a23b236e0985f53db785bf46ae840a1e6830a73a82032643659fbe001733",
+        "size_bytes": 7436
+      },
+      {
+        "path": "GJ486b_Zenodo_2023/ForwardModels/GJ486b_water_model.txt",
+        "role": "picaso_water_template",
+        "sha256": "3046872ef36ddc946de8eb774cfecb063650b393c86b304a9c46bcc5c9b70abc",
+        "size_bytes": 27730
+      },
+      {
+        "path": "GJ486b_Zenodo_2023/StellarSpectra/GJ486_StellarSpectraAndModels.txt",
+        "role": "phoenix_m1_m3_models",
+        "sha256": "96e33d11190d685942e447d08361c88bf3d58533a3f3b46eab42505d911faeca",
+        "size_bytes": 941330
+      }
+    ],
+    "record_version": "v3",
+    "url": "https://zenodo.org/api/records/10408056/files/GJ486b_Zenodo_2023.zip/content"
+  },
+  "states": {
+    "real_data_readiness": "not_established",
+    "science_state": "not_applicable_synthetic"
+  },
+  "templates": {
+    "centering": "weighted projection of each binned template against intercept, wavelength trend, and NRS2 step using reported Eureka uncertainties",
+    "normalization": "unit nuisance-projected diagonal matched-filter norm",
+    "planet": "PICASO 1-bar water transit-depth model converted to ppm and piecewise-linearly averaged over each published Eureka bin",
+    "stellar": "PHOENIX M3/M1 flux contrast minus one, converted to ppm and center-interpolated with constant endpoint handling; the detector gap is never bridged"
+  }
+}

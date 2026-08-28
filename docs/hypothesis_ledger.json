@@ -12,6 +12,7 @@
   "selection_vocabulary": [
     "positive_control",
     "negative_control",
+    "validation_suite",
     "retrospective_replication",
     "prospective"
   ],
@@ -76,6 +77,36 @@
       "success_gate": "Reproduce the frozen per-reduction z fingerprints without correlated-view voting, expose bin, detector, nuisance and assumed-covariance sensitivity, require M3 to rank above M1 in both stellar visits, and return PASS / science_unresolved with origin comparison not_evaluated.",
       "stop_rule": "If plausible models remain within the evidence threshold, report unresolved.",
       "allowed_claim": "The harness reproduces the pinned GO 1981 NIRSpec water-template regressions and exposes their reduction, detector-side, influential-bin, covariance, and nuisance sensitivity; no direct planet-versus-star origin comparison is available in the deposited products."
+    },
+    {
+      "hypothesis_id": "H-SYNTH-ATM-B3A",
+      "target_id": "synthetic-Eureka-grid",
+      "track": "atmosphere",
+      "layer": "observation",
+      "selection_status": "validation_suite",
+      "exact_claim": "The public B3a linear-Gaussian engineering preflight meets every frozen smoke gate without using observed transit depths.",
+      "status": "contradicted",
+      "null_hypothesis": "The public decision procedure does not adequately control unsafe over-specific classification or correctly classify omitted-model and signed-cancellation synthetic stress cases.",
+      "competing_hypotheses": ["calibrated public preflight", "unsafe over-specific classification", "model-inadequacy miss", "forced classification under signed cancellation"],
+      "test": "Run 648 deterministic public cases on the pinned Eureka grid with exact correct-covariance and naive-diagonal fits, separate generator/evaluator/scorer roles, and frozen recovery, coverage, pull, diagnostic-classification, and invariance gates.",
+      "success_gate": "Every bundled B3a gate passes with no missing case, no denominator exclusion, verified source/template hashes, and byte-deterministic outputs.",
+      "stop_rule": "Any unmet gate returns engineering_preflight_status INCOMPLETE; do not tune the revealed v1 suite, declare B3 complete, or authorize K2-18 b.",
+      "allowed_claim": "The B3a public synthetic preflight executed all 648 cases but remains incomplete because unsafe-specific-classification and diagnostic-classification gates were not met."
+    },
+    {
+      "hypothesis_id": "H-SYNTH-ATM-B3B",
+      "target_id": "synthetic-hidden-multimolecule-suite",
+      "track": "atmosphere",
+      "layer": "observation",
+      "selection_status": "prospective",
+      "exact_claim": "A sealed hidden-truth suite establishes global molecular-attribution calibration and real-data readiness under the frozen molecule, stellar, instrument, covariance, and model-misspecification families.",
+      "status": "untested",
+      "null_hypothesis": "The atmospheric evaluator is not globally calibrated or does not abstain reliably under hidden confounders and model misspecification.",
+      "competing_hypotheses": ["globally calibrated evaluator", "molecule confusion", "stellar or instrument confusion", "model misspecification", "truth leakage"],
+      "test": "Run the sealed B3b suite with independent truth custody and scoring, secret entropy, HMAC-derived identifiers, distinct generator families, frozen evaluator digest, and complete denominators.",
+      "success_gate": "Every preregistered global calibration, power, coverage, abstention, provenance, secrecy, and independence gate passes at the full release sample sizes.",
+      "stop_rule": "Any leakage, missing cell, scorer dependence, generator inverse crime, or failed gate keeps real_data_readiness not_established and blocks claim-bearing K2-18 b analysis.",
+      "allowed_claim": "B3b has not been executed; global molecular-attribution calibration and real-data readiness remain unestablished."
     },
     {
       "hypothesis_id": "H-K218-CH4",

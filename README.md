@@ -32,6 +32,15 @@ claims, nulls, confounders, gates, and stopping rules.
   MIRI fixed-model constraint. Its required result is `PASS /
   science_unresolved`; the direct planet-versus-star origin comparison is
   explicitly `not_evaluated`.
+- **Synthetic atmospheric engineering preflight — implemented, incomplete:**
+  the isolated B3a harness runs 648 deterministic public synthetic cases on
+  the pinned Eureka grid without observed transit depths. The frozen v1 run
+  passes recovery, coverage, pull, and invariance checks but misses unsafe-
+  specific and diagnostic-classification gates, so it correctly reports
+  `INCOMPLETE`; its all-gates-pass hypothesis is contradicted.
+- **Sealed synthetic scientific gate — pending:** B3b still requires an
+  independent truth custodian/scorer and the preregistered 2,000-negative,
+  1,000-power, and 2,000-coverage-per-cell release ensembles.
 - **K2-18 b — retrospective replication only:** methane is the strongest
   published atmospheric result; CO2 is less independently mature; DMS/DMDS,
   an ocean, a technosignature, and life are not established.
@@ -81,6 +90,31 @@ combined as independent evidence. GO 5866 is recorded only as public NIRISS
 archive time-series availability, with no B2 interpretation. See
 [`docs/GJ486_BENCHMARK.md`](docs/GJ486_BENCHMARK.md) for inputs, calculations,
 program provenance, diagnostics, citations, and the strict claim ceiling.
+
+## Milestone B3a — synthetic atmospheric engineering preflight
+
+The isolated `synthetic_atmosphere_benchmark` package and
+`synthetic-atmosphere-benchmark` CLI reuse only the three checksum-pinned GJ
+486 b NIRSpec source members. They read Eureka wavelengths, widths, and
+uncertainties, but deliberately never parse observed transit depths. The
+planet proxy is the binned author PICASO water template and the stellar proxy
+is the centered PHOENIX M3/M1 contrast.
+
+```bash
+uv sync
+uv run synthetic-atmosphere-benchmark verify
+uv run synthetic-atmosphere-benchmark run
+```
+
+The public v1 preflight uses exact signed linear-Gaussian fits, correct and
+naive covariance diagnostics, separate challenge/truth/prediction schemas, and
+order-independent PCG64DXSM streams. Its current frozen result is
+`engineering_preflight_status=INCOMPLETE`, alongside
+`science_state=not_applicable_synthetic` and
+`real_data_readiness=not_established`. This is useful fail-closed engineering
+evidence, not permission to tune the suite, declare B3 complete, or analyze
+K2-18 b. See
+[`docs/SYNTHETIC_ATMOSPHERE_PREFLIGHT.md`](docs/SYNTHETIC_ATMOSPHERE_PREFLIGHT.md).
 
 ## Phase 1 — Voyager benchmark
 

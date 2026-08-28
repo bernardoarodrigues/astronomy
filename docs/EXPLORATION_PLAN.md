@@ -103,7 +103,13 @@ sink tests before the phrase “potential biosignature” could be considered.
 
 - [x] Recover WASP-39 b's strong CO2 feature from a published spectrum.
 - [x] Reproduce the archived GJ 486 b NIRSpec water-template regressions and their sensitivity diagnostics; label the direct planet-versus-star comparison `not_evaluated`, preserve `science_unresolved`, and reproduce GO-1743 MIRI only as a separate fixed-model constraint.
-- [ ] Run the identical retrieval harness on synthetic spectra with hidden truth.
+- [x] **B3a executed; all-gates-pass hypothesis contradicted:** the public 648-case engineering
+  preflight passes its recovery, coverage, pull, and invariance checks but
+  misses frozen unsafe-specific and diagnostic-classification gates. Keep the preflight
+  `INCOMPLETE`; do not tune it after seeing truth.
+- [ ] **B3b pending:** run a separately governed sealed hidden-truth suite with
+  an independent truth custodian/scorer and the full preregistered Monte Carlo
+  sizes before any K2-18 b authorization.
 - [ ] Only then run the frozen K2-18 b CH4 and CO2 replication.
 - [ ] Treat the K2-18 b DMS/DMDS exercise as an adversarial model-comparison test,
    not a search optimized to recover sulfur.
